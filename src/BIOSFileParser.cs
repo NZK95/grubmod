@@ -14,7 +14,7 @@ namespace grubmod
            Labels.VarSectionNameLabels.All(line.Contains);
 
         private static bool IsLineDefaultValueDefinition(string line, string defaultNumericValue) =>
-            line.Contains(Labels.VALUE_DEFINITION) && line.Contains(defaultNumericValue) && !string.IsNullOrEmpty(line);
+            line.Contains(Labels.VALUE_DEFINITION) && line.Contains(defaultNumericValue) && !string.IsNullOrEmpty(defaultNumericValue);
 
         public async static Task<ObservableCollection<Option>> ExtractInformation()
         {
@@ -155,31 +155,22 @@ namespace grubmod
             return "N/A";
         }
 
-        private static string RecoverDefaultIdValueIfExists(List<string> lines)
-        {
-            foreach (var line in lines)
-            {
-                if (line.Contains("Default DefaultId:"))
-                    return Regex.Match(line, @"Value:\s*(\S+)\s*$").Groups[1].Value.Replace("\"", string.Empty).Trim();
-            }
+        private static string RecoverDefaultIdValueIfExists(List<string> lines) => lines
+            .Where(line => line.Contains("Default DefaultId:"))
+            .Select(line => Regex.Match(line, @"Value:\s*(\S+)\s*$").Groups[1].Value.Replace("\"", string.Empty).Trim())
+            .FirstOrDefault() ?? string.Empty;
 
-            return string.Empty;
-        }
 
-        private static string GetDefaultValueForCheckBoxes(List<string> lines)
-        {
-            return string.Join("", (from line in lines
-                                    where line.Contains("Default:")
-                                    let startIndex = line.IndexOf("Default:") + "Default:".Length
-                                    let endIndex = line.IndexOf(',', startIndex)
-                                    select line[startIndex..endIndex].Trim()));
-        }
+        private static string GetDefaultValueForCheckBoxes(List<string> lines) =>
+            string.Join("", (from line in lines
+                             where line.Contains("Default:")
+                             let startIndex = line.IndexOf("Default:") + "Default:".Length
+                             let endIndex = line.IndexOf(',', startIndex)
+                             select line[startIndex..endIndex].Trim()));
 
         private static string ExtractAllLinesRelatedToAnOption(int startIndex)
         {
             var endIndex = Lines.FindIndex(startIndex, x => x.Trim().Equals("End"));
-            endIndex = endIndex == -1 ? throw new ArgumentException("End index invalid") : endIndex;
-
             return string.Join("\n", Lines[startIndex..endIndex]);
         }
     }

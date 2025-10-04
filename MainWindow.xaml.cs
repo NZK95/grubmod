@@ -65,7 +65,7 @@ namespace grubmod
             if (optionToFind == "Search.." || string.IsNullOrEmpty(optionToFind))
                 return;
 
-            var result = new ObservableCollection<Option>(await Task.Run(() => Grub.Options.Where(x => (bool)parametrRadioButton.IsChecked ?
+            var result = new ObservableCollection<Option>(await Task.Run(() => Grub.DefaultOptions.Where(x => (bool)parametrRadioButton.IsChecked ?
             Grub.IsMatchCaseEnabled ? x.VarName.ToLower().Equals(optionToFind.ToLower())
             : x.VarName.ToLower().Contains(optionToFind.ToLower()) : Grub.IsMatchCaseEnabled ?
             x.VarDescription.ToLower().Equals(optionToFind.ToLower()) :
@@ -74,8 +74,11 @@ namespace grubmod
             if (result.Count > 0)
             {
                 SetToAllComboBox.Items.Clear();
-                optionsListView.ItemsSource = result;
+                optionsListView.ItemsSource = Grub.Options = result;
+
+                ShowAllOptions.IsChecked = true;
                 FindCommonValues();
+
                 MessageBox.Show($"All options with \"{optionToFind}\" key printed.", "Found some options.", MessageBoxButton.OK, MessageBoxImage.Information);
             }
             else
@@ -101,7 +104,8 @@ namespace grubmod
 
         private void ClearButton_Click(object sender, RoutedEventArgs e)
         {
-            optionsListView.ItemsSource = Grub.DefaultOptions;
+            optionsListView.ItemsSource = Grub.Options = Grub.DefaultOptions;
+            ShowAllOptions.IsChecked = true;
             SetToAllComboBox.Items.Clear();
             searchBox.Text = "Search..";
             searchBox.Foreground = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#333333"));
@@ -141,8 +145,6 @@ namespace grubmod
                 gridview.Columns.Remove(DescriptionColumnValue);
         }
 
-
-
         private void ApplyToAll_Click(object sender, RoutedEventArgs e)
         {
             if (SetToAllComboBox.Items.Count <= 0)
@@ -165,16 +167,16 @@ namespace grubmod
         }
 
         private void ShowAllOptions_Checked(object sender, RoutedEventArgs e) =>
-            optionsListView.ItemsSource = Grub.DefaultOptions;
+            optionsListView.ItemsSource = Grub.Options;
 
         private void ShowAllNormalOptions_Checked(object sender, RoutedEventArgs e) =>
-              optionsListView.ItemsSource = Grub.DefaultOptions.Where(x => x.OptionType.Equals(Labels.NORMAL_OPTION_DEFINITION));
+            optionsListView.ItemsSource = Grub.Options.Where(x => x.OptionType.Equals(Labels.NORMAL_OPTION_DEFINITION));
 
         private void ShowAllCheckBoxOptions_Checked(object sender, RoutedEventArgs e) =>
-            optionsListView.ItemsSource = Grub.DefaultOptions.Where(x => x.OptionType.Equals(Labels.CHECKBOX_OPTION_DEFINITION));
+            optionsListView.ItemsSource = Grub.Options.Where(x => x.OptionType.Equals(Labels.CHECKBOX_OPTION_DEFINITION));
 
         private void ShowAllNumericOptions_Checked(object sender, RoutedEventArgs e) =>
-            optionsListView.ItemsSource = Grub.DefaultOptions.Where(x => x.OptionType.Equals(Labels.NUMERIC_OPTION_DEFINITION));
+            optionsListView.ItemsSource = Grub.Options.Where(x => x.OptionType.Equals(Labels.NUMERIC_OPTION_DEFINITION));
 
         private void MatchCase_Checked(object sender, RoutedEventArgs e) => Grub.IsMatchCaseEnabled = true;
 
