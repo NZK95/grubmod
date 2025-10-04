@@ -141,9 +141,7 @@ namespace grubmod
                 gridview.Columns.Remove(DescriptionColumnValue);
         }
 
-        private void MatchCase_Checked(object sender, RoutedEventArgs e) => Grub.IsMatchCaseEnabled = true;
 
-        private void MatchCase_Unchecked(object sender, RoutedEventArgs e) => Grub.IsMatchCaseEnabled = false;
 
         private void ApplyToAll_Click(object sender, RoutedEventArgs e)
         {
@@ -178,5 +176,8 @@ namespace grubmod
         private void ShowAllNumericOptions_Checked(object sender, RoutedEventArgs e) =>
             optionsListView.ItemsSource = Grub.DefaultOptions.Where(x => x.OptionType.Equals(Labels.NUMERIC_OPTION_DEFINITION));
 
+        private void MatchCase_Checked(object sender, RoutedEventArgs e) => Grub.IsMatchCaseEnabled = true;
+
+        private void MatchCase_Unchecked(object sender, RoutedEventArgs e) => Grub.IsMatchCaseEnabled = false;
     }
 }
