@@ -160,7 +160,6 @@ namespace grubmod
             .Select(line => Regex.Match(line, @"Value:\s*(\S+)\s*$").Groups[1].Value.Replace("\"", string.Empty).Trim())
             .FirstOrDefault() ?? string.Empty;
 
-
         private static string GetDefaultValueForCheckBoxes(List<string> lines) =>
             string.Join("", (from line in lines
                              where line.Contains("Default:")

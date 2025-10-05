@@ -13,12 +13,11 @@
         </DataTemplate>
 
         <DataTemplate x:Key="TextTemplate">
-            <TextBox Text="{Binding VarSelectedValue, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+            <TextBox Text="{Binding VarSelectedValue, Mode=TwoWay, UpdateSourceTrigger=LostFocus}"/>
         </DataTemplate>
 
         <DataTemplate x:Key="CheckBoxTemplate">
-            <CheckBox IsChecked="{Binding VarSelectedValue, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                  Content="{Binding VarSelectedValue}"/>
+            <CheckBox IsChecked="{Binding VarSelectedValue, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
         </DataTemplate>
 
         <local:ComboOrTextTemplateSelector x:Key="ComboOrTextSelector"
