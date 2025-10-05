@@ -8,7 +8,7 @@
     <Window.Resources>
 
         <DataTemplate x:Key="ComboTemplate">
-            <ComboBox ItemsSource="{Binding VarValues}"
+            <ComboBox ItemsSource="{Binding Fields.VarValues}"
                   SelectedItem="{Binding VarSelectedValue, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
         </DataTemplate>
 
@@ -29,11 +29,10 @@
             <Setter Property="BorderThickness" Value="0"/>
             <Setter Property="Background" Value="#000000"/>
             <Setter Property="Foreground" Value="White"/>
-            <Setter Property="AlternationCount" Value="2"/>
             <Setter Property="ItemContainerStyle">
                 <Setter.Value>
                     <Style TargetType="ListViewItem">
-                        <Setter Property="Padding" Value="5,3"/>
+                        <Setter Property="Padding" Value="4"/>
                         <Setter Property="Background" Value="#000000"/>
                         <Setter Property="Foreground" Value="White" />
                         <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
@@ -41,13 +40,6 @@
                     </Style>
                 </Setter.Value>
             </Setter>
-        </Style>
-
-        <Style TargetType="ComboBox">
-            <Setter Property="Background" Value="#000000"/>
-            <Setter Property="Foreground" Value="Black"/>
-            <Setter Property="BorderBrush" Value="#000000"/>
-            <Setter Property="Padding" Value="2"/>
         </Style>
 
         <Style TargetType="ComboBoxItem">
@@ -60,12 +52,10 @@
         <Style TargetType="GridViewColumnHeader">
             <Setter Property="Background" Value="Transparent"/>
             <Setter Property="Foreground" Value="White"/>
-            <Setter Property="Padding" Value="8 4"/>
             <Setter Property="BorderBrush" Value="White"></Setter>
             <Setter Property="BorderThickness" Value="2"></Setter>
             <Setter Property="HorizontalContentAlignment" Value="Center"/>
             <Setter Property="VerticalContentAlignment" Value="Center"/>
-            <Setter Property="Padding" Value="4,2"/>
             <Setter Property="FontWeight" Value="DemiBold"></Setter>
             <Setter Property="Template">
                 <Setter.Value>
@@ -81,21 +71,23 @@
         </Style>
     </Window.Resources>
 
-    <Grid Margin="10,10,10,102">
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="1153*"/>
-            <ColumnDefinition Width="18*"/>
-            <ColumnDefinition Width="90*"/>
-            <ColumnDefinition Width="640*"/>
-        </Grid.ColumnDefinitions>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="40"/>
-        </Grid.RowDefinitions>
+    <TabControl Background="#000000" Foreground="White">
+        <TabItem Header="Main" Foreground="White" Background="#000000">
+            <Grid Margin="10,10,10,102">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1153*"/>
+                    <ColumnDefinition Width="18*"/>
+                    <ColumnDefinition Width="90*"/>
+                    <ColumnDefinition Width="640*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="40"/>
+                </Grid.RowDefinitions>
 
-        <DockPanel Grid.Row="0" Margin="0 0 0 10" Grid.ColumnSpan="4">
-            <TextBox x:Name="searchBox"
+                <DockPanel Grid.Row="0" Margin="0 0 0 10" Grid.ColumnSpan="4">
+                    <TextBox x:Name="searchBox"
                      Width="300"
                      Height="33"
                      Padding="5"
@@ -106,76 +98,98 @@
                      BorderBrush="#222222"
                      BorderThickness="1"
                      GotFocus="SearchBoxGotFocus"
-                     LostFocus="SearchBoxLostFocus"
-                     />
-        </DockPanel>
+                     LostFocus="SearchBoxLostFocus"/>
+                </DockPanel>
 
-        <RadioButton x:Name="parametrRadioButton" Height="30" Width="150" Content="Parametr" IsChecked="True" Background="#000000" Foreground="White" GroupName="SearchMode" Margin="336,16,667,18"/>
-        <RadioButton Height="30" Width="150" Content="Description" Background="#000000" Foreground="White" GroupName="SearchMode" Margin="439,16,564,18"/>
+                <RadioButton x:Name="parametrRadioButton" Height="30" Width="150" Content="Parametr" IsChecked="True" Background="#000000" Foreground="White" GroupName="SearchMode" Margin="217,16,782,16"/>
+                <RadioButton Height="30" Width="150" Content="Description" Background="#000000" Foreground="White" GroupName="SearchMode" Margin="322,16,677,16"/>
 
-        <Button Content="Search" Foreground ="White" Background="#000000" BorderBrush="#222222" MaxWidth="100" Margin="582,12,471,19" Height="33" Click="SearchButton_Click" />
-        <Button Content="Clear" Foreground ="White" Background="#000000" BorderBrush="#222222"  MaxWidth="100" Margin="687,12,366,19" Height="33" Click="ClearButton_Click"/>
+                <Button Content="Search" Foreground ="White" Background="#000000" BorderBrush="#222222" MaxWidth="100" Margin="582,12,471,19" Height="33" Click="SearchButton_Click" />
+                <Button Content="Clear" Foreground ="White" Background="#000000" BorderBrush="#222222"  MaxWidth="100" Margin="687,12,366,19" Height="33" Click="ClearButton_Click"/>
+                <Button Content="Google" Foreground ="White" Background="#000000" BorderBrush="#222222" MaxWidth="100" Margin="476,12,577,19" Height="33" Click="GoogleButton_Click"/>
 
-        <CheckBox Width="30" Height="30"  Margin="1113,18,10,16" Checked="ShowDescription_Checked" Unchecked="ShowDescription_Unchecked"/>
-        <TextBlock Foreground="White" Height="30" Text="Show description" Margin="1135,16,626,18" Grid.ColumnSpan="4"/>
+                <CheckBox Width="30" Height="30"  Margin="1106,17,13,17" Checked="MatchCase_Checked" Unchecked="MatchCase_Unchecked"/>
+                <TextBlock Foreground="White" Height="30" Text="Match case" Margin="1128,15,1,19" Grid.ColumnSpan="3"/>
 
-        <CheckBox Width="30" Height="30"  Margin="26,18,584,16" Checked="MatchCase_Checked" Unchecked="MatchCase_Unchecked" Grid.Column="3"/>
-        <TextBlock Foreground="White" Height="30" Text="Match case" Margin="48,17,499,17" Grid.Column="3"/>
-
-        <TextBlock Foreground="White" Height="30" Text="Set all to:" Margin="153,18,395,16" Grid.Column="3"/>
-        <ComboBox x:Name="SetToAllComboBox"
+                <TextBlock Foreground="White" Height="30" Text="Set all to:" Margin="34,15,501,19" Grid.Column="3" RenderTransformOrigin="0.844,0.53"/>
+                <ComboBox x:Name="SetToAllComboBox"
           Foreground="White"
           Background="Black"
           Width="150"
           Height="25"
           Grid.Column="3"
-          Margin="250,14,240,24">
-        </ComboBox>
-        <Button Content="Apply" Foreground ="White" Background="#000000" BorderBrush="#222222" MaxWidth="100" Margin="405,14,135,24" Height="25" Click="ApplyToAll_Click" Grid.Column="3" />
+          Margin="143,15,345,24">
+                </ComboBox>
+                <Button Content="Apply" Foreground ="White" Background="#000000" BorderBrush="#222222" MaxWidth="100" Margin="303,15,237,24" Height="25" Click="ApplyToAll_Click" Grid.Column="3" />
 
-        <ListView x:Name="optionsListView" Margin="0,56,0,10" Grid.RowSpan="3" Grid.ColumnSpan="4" BorderThickness="2" BorderBrush="White">
-            <ListView.View>
-                <GridView>
-                    <GridViewColumn Header="VarName" Width="500"
-                            DisplayMemberBinding="{Binding VarName}" />
-                    <GridViewColumn Header="VarOffset" Width="100"
-                            DisplayMemberBinding="{Binding VarOffset}" />
-                    <GridViewColumn Header="VarStoreId" Width="100"
-                            DisplayMemberBinding="{Binding VarStoreId}" />
-                    <GridViewColumn Header="VarSectionName" Width="150"
-                            DisplayMemberBinding="{Binding VarSectionName}" />
-                    <GridViewColumn Header="Values" Width="200" CellTemplateSelector="{StaticResource ComboOrTextSelector}"/>
+                <ListView x:Name="optionsListView" Margin="0,56,0,10" Grid.RowSpan="3" Grid.ColumnSpan="4" BorderThickness="2" BorderBrush="White">
+                    <ListView.View>
+                        <GridView>
+                            <GridViewColumn Header="VarName" Width="500"
+                            DisplayMemberBinding="{Binding Fields.VarName}" />
+                            <GridViewColumn Header="VarOffset" Width="100"
+                            DisplayMemberBinding="{Binding Fields.VarOffset}" />
+                            <GridViewColumn Header="VarStoreId" Width="100"
+                            DisplayMemberBinding="{Binding Fields.VarStoreId}" />
+                            <GridViewColumn Header="VarSectionName" Width="150"
+                            DisplayMemberBinding="{Binding Fields.VarSectionName}" />
+                            <GridViewColumn Header="Values" Width="200" CellTemplateSelector="{StaticResource ComboOrTextSelector}"/>
 
-                    <GridViewColumn Header="BIOS Default">
-                        <GridViewColumn.CellTemplate>
-                            <DataTemplate>
-                                <TextBlock Text="{Binding VarBIOSDefaultValue}" HorizontalAlignment="Left" TextWrapping="Wrap"/>
-                            </DataTemplate>
-                        </GridViewColumn.CellTemplate>
-                    </GridViewColumn>
+                            <GridViewColumn Header="BIOS Default">
+                                <GridViewColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <TextBlock Text="{Binding Fields.VarBIOSDefaultValue}" HorizontalAlignment="Left" TextWrapping="Wrap"/>
+                                    </DataTemplate>
+                                </GridViewColumn.CellTemplate>
+                            </GridViewColumn>
 
-                    <GridViewColumn Header="Description">
-                        <GridViewColumn.CellTemplate>
-                            <DataTemplate>
-                                <TextBlock Text="{Binding VarDescription}" HorizontalAlignment="Left" TextWrapping="Wrap"/>
-                            </DataTemplate>
-                        </GridViewColumn.CellTemplate>
-                    </GridViewColumn>
+                            <GridViewColumn Header="Description">
+                                <GridViewColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <TextBlock Text="{Binding Fields.VarDescription}" HorizontalAlignment="Left" TextWrapping="Wrap"/>
+                                    </DataTemplate>
+                                </GridViewColumn.CellTemplate>
+                            </GridViewColumn>
 
-                </GridView>
-            </ListView.View>
-        </ListView>
+                        </GridView>
+                    </ListView.View>
+                </ListView>
 
-        <Button Content="Load config" BorderBrush="#222222" Foreground ="White" Background="#000000" Width="200" Margin="211,47,742,-48" Grid.Row="2"/>
-        <Button Content="Export script" BorderBrush="#222222" Foreground ="White" Background="#000000" Width="200" Margin="0,47,953,-48" Grid.Row="2"/>
-        <Button Content="Import file" BorderBrush="#222222" Foreground ="White" Background="#000000" Width="200" Margin="0,93,953,-94" Grid.Row="2"/>
-        <Button Content="Create config" BorderBrush="#222222" Foreground ="White" Background="#000000" Width="200" Margin="211,93,742,-94" Grid.Row="2"/>
+                <Button Content="Load config" BorderBrush="#222222" Foreground ="White" Background="#000000" Margin="211,47,733,-48" Grid.Row="2"/>
+                <Button Content="Export script" BorderBrush="#222222" Foreground ="White" Background="#000000" Margin="0,47,944,-48" Grid.Row="2"/>
+                <Button Content="Import file" BorderBrush="#222222" Foreground ="White" Background="#000000" Margin="0,93,945,-94" Grid.Row="2"/>
+                <Button Content="Create config" BorderBrush="#222222" Foreground ="White" Background="#000000" Margin="211,93,733,-94" Grid.Row="2"/>
 
 
-        <RadioButton x:Name="ShowAllOptions" IsChecked="True" GroupName="ShowGroupOfOptions" Height="30" Content="Show all options" Background="#000000" Foreground="White" Margin="438,54,536,-44" Grid.Row="2" Checked="ShowAllOptions_Checked"/>
-        <RadioButton x:Name="ShowAllNumericOptions" Height="30" GroupName="ShowGroupOfOptions" Content="Show all numeric options" Background="#000000" Foreground="White" Margin="701,101,209,-91" Grid.Row="2" Checked="ShowAllNumericOptions_Checked" />
-        <RadioButton  x:Name="ShowAllNormalOptions" Height="30" GroupName="ShowGroupOfOptions" Content="Show all normal options" Background="#000000" Foreground="White" Margin="628,54,271,-44" Grid.Row="2" RenderTransformOrigin="0.5,0.5" Checked="ShowAllNormalOptions_Checked"/>
-        <RadioButton  x:Name="ShowAllCheckBoxOptions" Height="30" GroupName="ShowGroupOfOptions" Content="Show all checkbox options" Background="#000000" Foreground="White" Margin="437,101,450,-91" Grid.Row="2" Checked="ShowAllCheckBoxOptions_Checked" />
+                <RadioButton x:Name="ShowAllOptions" IsChecked="True" GroupName="ShowGroupOfOptions" Height="30" Content="Show all options" Background="#000000" Foreground="White" Margin="438,54,536,-44" Grid.Row="2" Checked="ShowAllOptions_Checked"/>
+                <RadioButton x:Name="ShowAllNumericOptions" Height="30" GroupName="ShowGroupOfOptions" Content="Show all numeric options" Background="#000000" Foreground="White" Margin="701,101,209,-91" Grid.Row="2" Checked="ShowAllNumericOptions_Checked" />
+                <RadioButton  x:Name="ShowAllNormalOptions" Height="30" GroupName="ShowGroupOfOptions" Content="Show all normal options" Background="#000000" Foreground="White" Margin="628,54,271,-44" Grid.Row="2" RenderTransformOrigin="0.5,0.5" Checked="ShowAllNormalOptions_Checked"/>
+                <RadioButton  x:Name="ShowAllCheckBoxOptions" Height="30" GroupName="ShowGroupOfOptions" Content="Show all checkbox options" Background="#000000" Foreground="White" Margin="437,101,450,-91" Grid.Row="2" Checked="ShowAllCheckBoxOptions_Checked" />
+            </Grid>
+        </TabItem>
+        <TabItem Header="Options" Foreground="White" Background="#000000">
+            <Grid Background="#000000">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
 
-    </Grid>
+                
+                <TextBlock Grid.Row="0"
+                   Foreground="White"
+                   Text="Show:"
+                   Margin="15,8,-5,2"/>
+
+                <StackPanel Margin="10 0 0 0" Grid.Row="1" Orientation="Vertical" VerticalAlignment="Top">
+                    <CheckBox Foreground="White" Content="Description" Margin="0,5" Checked="ShowDescription_Checked" Unchecked="ShowDescription_Unchecked"/>
+                    <CheckBox Foreground="White" Content="BIOS Default value" Margin="0,5" Checked="ShowBIOSDefaultValue_Checked" Unchecked="ShowBIOSDefaultValue_Unchecked"/>
+                    <CheckBox Foreground="White" Content="VarStoreId" Margin="0,5" Checked="ShowVarStoreId_Checked" Unchecked="ShowVarStoreId_Unchecked"/>
+                </StackPanel>
+            </Grid>
+        </TabItem>
+
+        <TabItem Header="About" Foreground="White" Background="#000000">
+
+        </TabItem>
+    </TabControl>
 </Window>    

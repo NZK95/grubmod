@@ -27,31 +27,22 @@ namespace grubmod
                                   line.Contains(Labels.NUMERIC_OPTION_DEFINITION) ? Labels.NUMERIC_OPTION_DEFINITION :
                                   line.Contains(Labels.CHECKBOX_OPTION_DEFINITION) ? Labels.CHECKBOX_OPTION_DEFINITION : null;
 
-                if (optionType is not null)
+                if (optionType is null) continue;
+
+                try
                 {
-                    var varSize = string.Empty;
-                    var varName = string.Empty;
-                    var varOffset = string.Empty;
-                    var varStoreId = string.Empty;
-                    var varSectionName = string.Empty;
-                    var varValues = new List<string>();
-
-                    try
-                    {
-                        varSize = optionType.Equals(Labels.CHECKBOX_OPTION_DEFINITION) ? "0x1" : "0x" + (Convert.ToInt32(ExtractValueByLabel(i, Labels.SIZE_DEFINITION)) / 8).ToString("X");
-                        varName = ExtractValueByLabel(i, optionType);
-                        varOffset = ExtractValueByLabel(i, Labels.VAROFFSET_DEFINITION);
-                        varStoreId = ExtractValueByLabel(i, Labels.VARSTOREID_DEFINITION);
-                        varSectionName = ExtractVarSectionName(varStoreId);
-                        varValues = ExtractValues(i);
-                    }
-                    catch (Exception) { }
-
+                    var varSize = optionType.Equals(Labels.CHECKBOX_OPTION_DEFINITION) ? "0x1" :"0x" + (Convert.ToInt32(ExtractValueByLabel(i, Labels.SIZE_DEFINITION)) / 8).ToString("X");
+                    var varName = ExtractValueByLabel(i, optionType);
+                    var varOffset = ExtractValueByLabel(i, Labels.VAROFFSET_DEFINITION);
+                    var varStoreId = ExtractValueByLabel(i, Labels.VARSTOREID_DEFINITION);
+                    var varSectionName = ExtractVarSectionName(varStoreId);
+                    var varValues = ExtractValues(i);
                     var varDescription = ExtractValueByLabel(i, Labels.DESCRIPTION_DEFINITION);
                     var varDefaultValue = ExtractDefaultValue(i, optionType);
 
-                    options.Add(new Option(optionType, varName, varOffset, varStoreId, varSectionName, varSize, varDescription, varDefaultValue, varValues));
+                    options.Add(new Option(new OptionFields(optionType, varName, varOffset, varStoreId, varSectionName, varSize, varDescription, varDefaultValue, varValues)));
                 }
+                catch (Exception) { }
             }
 
             return new ObservableCollection<Option>(options.Distinct());

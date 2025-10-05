@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.Diagnostics;
 using System.IO;
+using System.Security.Policy;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Windows;
@@ -27,7 +29,7 @@ namespace grubmod
         {
             if (item is Option option)
             {
-                switch (option.OptionType)
+                switch (option.Fields.OptionType)
                 {
                     case var s when s == Labels.NORMAL_OPTION_DEFINITION: return ComboTemplate;
                     case var s when s == Labels.NUMERIC_OPTION_DEFINITION: return TextTemplate;
@@ -42,21 +44,30 @@ namespace grubmod
 
     public partial class MainWindow : Window
     {
-        public static GridViewColumn DescriptionColumnValue { get; set; }
+        public static GridViewColumn DescriptionColumnValue { get; private set; }
+        public static GridViewColumn VarStoreIdColumnValue { get; private set; }
+        public static GridViewColumn BIOSDefaultValueColumnValue { get; private set; }
 
         public MainWindow()
         {
             InitializeComponent();
             optionsListView.ItemsSource = Grub.DefaultOptions;
-            HideDescriptionColumn();
+            HideColumns();
         }
 
-        private void HideDescriptionColumn()
+        private void HideColumns()
         {
             var gridview = optionsListView.View as GridView;
+
             DescriptionColumnValue = gridview.Columns.FirstOrDefault(x => x.Header.Equals("Description"));
+            VarStoreIdColumnValue = gridview.Columns.FirstOrDefault(x => x.Header.Equals("VarStoreId"));
+            BIOSDefaultValueColumnValue = gridview.Columns.FirstOrDefault(x => x.Header.Equals("BIOS Default"));
+
             gridview.Columns.Remove(DescriptionColumnValue);
+            gridview.Columns.Remove(VarStoreIdColumnValue);
+            gridview.Columns.Remove(BIOSDefaultValueColumnValue);
         }
+
 
         private async void SearchButton_Click(object sender, RoutedEventArgs e)
         {
@@ -66,10 +77,10 @@ namespace grubmod
                 return;
 
             var result = new ObservableCollection<Option>(await Task.Run(() => Grub.DefaultOptions.Where(x => (bool)parametrRadioButton.IsChecked ?
-            Grub.IsMatchCaseEnabled ? x.VarName.ToLower().Equals(optionToFind.ToLower())
-            : x.VarName.ToLower().Contains(optionToFind.ToLower()) : Grub.IsMatchCaseEnabled ?
-            x.VarDescription.ToLower().Equals(optionToFind.ToLower()) :
-            x.VarDescription.ToLower().Contains(optionToFind.ToLower()))));
+            Grub.IsMatchCaseEnabled ? x.Fields.VarName.ToLower().Equals(optionToFind.ToLower())
+            : x.Fields.VarName.ToLower().Contains(optionToFind.ToLower()) : Grub.IsMatchCaseEnabled ?
+            x.Fields.VarDescription.ToLower().Equals(optionToFind.ToLower()) :
+            x.Fields.VarDescription.ToLower().Contains(optionToFind.ToLower()))));
 
             if (result.Count > 0)
             {
@@ -79,7 +90,7 @@ namespace grubmod
                 ShowAllOptions.IsChecked = true;
                 FindCommonValues();
 
-                MessageBox.Show($"All options with \"{optionToFind}\" key printed.", "Found some options.", MessageBoxButton.OK, MessageBoxImage.Information);
+                MessageBox.Show($"All options with \"{optionToFind}\" key printed.", $"Found {result.Count} matches.", MessageBoxButton.OK, MessageBoxImage.Information);
             }
             else
                 MessageBox.Show($"No options with \"{optionToFind}\" key found.", "Invalid input.", MessageBoxButton.OK, MessageBoxImage.Warning);
@@ -93,9 +104,9 @@ namespace grubmod
             foreach (var option in optionsListView.Items)
                 listOfMatchedOptions.Add(option as Option);
 
-            foreach (var option in listOfMatchedOptions[0].VarValues)
+            foreach (var option in listOfMatchedOptions[0].Fields.VarValues)
             {
-                if (listOfMatchedOptions.All(x => x.VarValues.Any(y => y.Equals(option, StringComparison.OrdinalIgnoreCase))))
+                if (listOfMatchedOptions.All(x => x.Fields.VarValues.Any(y => y.Equals(option, StringComparison.OrdinalIgnoreCase))))
                     SetToAllComboBox.Items.Add(new ComboBoxItem { Content = $"{option}", Foreground = Brushes.Black, Background = Brushes.White });
             }
 
@@ -134,7 +145,7 @@ namespace grubmod
             var gridview = optionsListView.View as GridView;
 
             if (!gridview.Columns.Contains(DescriptionColumnValue))
-                gridview.Columns.Add(DescriptionColumnValue);
+                gridview.Columns.Insert(gridview.Columns.Count, DescriptionColumnValue);
         }
 
         private void ShowDescription_Unchecked(object sender, RoutedEventArgs e)
@@ -144,6 +155,41 @@ namespace grubmod
             if (gridview.Columns.Contains(DescriptionColumnValue))
                 gridview.Columns.Remove(DescriptionColumnValue);
         }
+
+        private void ShowVarStoreId_Checked(object sender, RoutedEventArgs e)
+        {
+            var gridview = optionsListView.View as GridView;
+
+            if (!gridview.Columns.Contains(VarStoreIdColumnValue))
+                gridview.Columns.Insert(gridview.Columns.Count - (gridview.Columns.Count - 2), VarStoreIdColumnValue);
+        }
+
+        private void ShowVarStoreId_Unchecked(object sender, RoutedEventArgs e)
+        {
+            var gridview = optionsListView.View as GridView;
+
+            if (gridview.Columns.Contains(VarStoreIdColumnValue))
+                gridview.Columns.Remove(VarStoreIdColumnValue);
+        }
+
+        private void ShowBIOSDefaultValue_Checked(object sender, RoutedEventArgs e)
+        {
+            var gridview = optionsListView.View as GridView;
+            var index = gridview.Columns.Contains(DescriptionColumnValue) ? gridview.Columns.Count - 1 :
+                gridview.Columns.Count ;
+
+            if (!gridview.Columns.Contains(BIOSDefaultValueColumnValue))
+                gridview.Columns.Insert(index, BIOSDefaultValueColumnValue);
+        }
+
+        private void ShowBIOSDefaultValue_Unchecked(object sender, RoutedEventArgs e)
+        {
+            var gridview = optionsListView.View as GridView;
+
+            if (gridview.Columns.Contains(BIOSDefaultValueColumnValue))
+                gridview.Columns.Remove(BIOSDefaultValueColumnValue);
+        }
+
 
         private void ApplyToAll_Click(object sender, RoutedEventArgs e)
         {
@@ -170,16 +216,29 @@ namespace grubmod
             optionsListView.ItemsSource = Grub.Options;
 
         private void ShowAllNormalOptions_Checked(object sender, RoutedEventArgs e) =>
-            optionsListView.ItemsSource = Grub.Options.Where(x => x.OptionType.Equals(Labels.NORMAL_OPTION_DEFINITION));
+            optionsListView.ItemsSource = Grub.Options.Where(x => x.Fields.OptionType.Equals(Labels.NORMAL_OPTION_DEFINITION));
 
         private void ShowAllCheckBoxOptions_Checked(object sender, RoutedEventArgs e) =>
-            optionsListView.ItemsSource = Grub.Options.Where(x => x.OptionType.Equals(Labels.CHECKBOX_OPTION_DEFINITION));
+            optionsListView.ItemsSource = Grub.Options.Where(x => x.Fields.OptionType.Equals(Labels.CHECKBOX_OPTION_DEFINITION));
 
         private void ShowAllNumericOptions_Checked(object sender, RoutedEventArgs e) =>
-            optionsListView.ItemsSource = Grub.Options.Where(x => x.OptionType.Equals(Labels.NUMERIC_OPTION_DEFINITION));
+            optionsListView.ItemsSource = Grub.Options.Where(x => x.Fields.OptionType.Equals(Labels.NUMERIC_OPTION_DEFINITION));
 
         private void MatchCase_Checked(object sender, RoutedEventArgs e) => Grub.IsMatchCaseEnabled = true;
 
         private void MatchCase_Unchecked(object sender, RoutedEventArgs e) => Grub.IsMatchCaseEnabled = false;
+
+        private void GoogleButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (searchBox.Text.Equals("Search..") || string.IsNullOrEmpty(searchBox.Text))
+                return;
+
+            var url = "https://www.google.com/search?q=" + Uri.EscapeDataString(searchBox.Text) + " BIOS setting.";
+            Process.Start(new ProcessStartInfo
+            {
+                FileName = url,
+                UseShellExecute = true 
+            });
+        }
     }
 }
