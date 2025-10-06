@@ -68,6 +68,39 @@ namespace grubmod
             gridview.Columns.Remove(BIOSDefaultValueColumnValue);
         }
 
+        private void FindCommonValues()
+        {
+            var listOfMatchedOptions = new List<Option>();
+
+            foreach (var option in optionsListView.Items)
+                listOfMatchedOptions.Add(option as Option);
+
+            foreach (var option in listOfMatchedOptions[0].Fields.VarValues)
+            {
+                if (listOfMatchedOptions.All(x => x.Fields.VarValues.Any(y => y.Equals(option, StringComparison.OrdinalIgnoreCase))))
+                    SetToAllComboBox.Items.Add(new ComboBoxItem { Content = $"{option}", Foreground = Brushes.Black, Background = Brushes.White });
+            }
+
+            SetToAllComboBox.SelectedItem = SetToAllComboBox.Items.Cast<ComboBoxItem>().FirstOrDefault();
+        }
+
+        private void SearchBoxGotFocus(object sender, RoutedEventArgs e)
+        {
+            if (searchBox.Text == "Search..")
+            {
+                searchBox.Text = string.Empty;
+                searchBox.Foreground = Brushes.White;
+            }
+        }
+
+        private void SearchBoxLostFocus(object sender, RoutedEventArgs e)
+        {
+            if (string.IsNullOrEmpty(searchBox.Text))
+            {
+                searchBox.Text = "Search..";
+                searchBox.Foreground = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#444444"));
+            }
+        }
 
         private async void SearchButton_Click(object sender, RoutedEventArgs e)
         {
@@ -97,20 +130,38 @@ namespace grubmod
 
         }
 
-        private void FindCommonValues()
+        private void ApplyToAll_Click(object sender, RoutedEventArgs e)
         {
-            var listOfMatchedOptions = new List<Option>();
-
-            foreach (var option in optionsListView.Items)
-                listOfMatchedOptions.Add(option as Option);
-
-            foreach (var option in listOfMatchedOptions[0].Fields.VarValues)
+            if (SetToAllComboBox.Items.Count <= 0)
             {
-                if (listOfMatchedOptions.All(x => x.Fields.VarValues.Any(y => y.Equals(option, StringComparison.OrdinalIgnoreCase))))
-                    SetToAllComboBox.Items.Add(new ComboBoxItem { Content = $"{option}", Foreground = Brushes.Black, Background = Brushes.White });
+                MessageBox.Show("No common values found", "No matches", MessageBoxButton.OK, MessageBoxImage.Warning);
+                return;
             }
 
-            SetToAllComboBox.SelectedItem = SetToAllComboBox.Items.Cast<ComboBoxItem>().FirstOrDefault();
+            var valueToSet = (SetToAllComboBox.SelectedItem as ComboBoxItem)?.Content?.ToString();
+            var listWithChangedSelectedValues = new ObservableCollection<Option>();
+
+            for (var i = 0; i < optionsListView.Items.Count; i++)
+            {
+                var option = optionsListView.Items[i] as Option;
+                option.VarSelectedValue = valueToSet;
+                listWithChangedSelectedValues.Add(option);
+            }
+
+            optionsListView.ItemsSource = listWithChangedSelectedValues;
+        }
+
+        private void GoogleButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (searchBox.Text.Equals("Search..") || string.IsNullOrEmpty(searchBox.Text))
+                return;
+
+            var url = "https://www.google.com/search?q=" + Uri.EscapeDataString(searchBox.Text) + " BIOS setting.";
+            Process.Start(new ProcessStartInfo
+            {
+                FileName = url,
+                UseShellExecute = true
+            });
         }
 
         private void ClearButton_Click(object sender, RoutedEventArgs e)
@@ -120,24 +171,6 @@ namespace grubmod
             SetToAllComboBox.Items.Clear();
             searchBox.Text = "Search..";
             searchBox.Foreground = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#333333"));
-        }
-
-        private void SearchBoxGotFocus(object sender, RoutedEventArgs e)
-        {
-            if (searchBox.Text == "Search..")
-            {
-                searchBox.Text = string.Empty;
-                searchBox.Foreground = Brushes.White;
-            }
-        }
-
-        private void SearchBoxLostFocus(object sender, RoutedEventArgs e)
-        {
-            if (string.IsNullOrEmpty(searchBox.Text))
-            {
-                searchBox.Text = "Search..";
-                searchBox.Foreground = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#444444"));
-            }
         }
 
         private void ShowDescription_Checked(object sender, RoutedEventArgs e)
@@ -188,28 +221,7 @@ namespace grubmod
 
             if (gridview.Columns.Contains(BIOSDefaultValueColumnValue))
                 gridview.Columns.Remove(BIOSDefaultValueColumnValue);
-        }
 
-
-        private void ApplyToAll_Click(object sender, RoutedEventArgs e)
-        {
-            if (SetToAllComboBox.Items.Count <= 0)
-            {
-                MessageBox.Show("No common values found", "No matches", MessageBoxButton.OK, MessageBoxImage.Warning);
-                return;
-            }
-
-            var valueToSet = (SetToAllComboBox.SelectedItem as ComboBoxItem)?.Content?.ToString();
-            var listWithChangedSelectedValues = new ObservableCollection<Option>();
-
-            for (var i = 0; i < optionsListView.Items.Count; i++)
-            {
-                var option = optionsListView.Items[i] as Option;
-                option.VarSelectedValue = valueToSet;
-                listWithChangedSelectedValues.Add(option);
-            }
-
-            optionsListView.ItemsSource = listWithChangedSelectedValues;
         }
 
         private void ShowAllOptions_Checked(object sender, RoutedEventArgs e) =>
@@ -227,18 +239,5 @@ namespace grubmod
         private void MatchCase_Checked(object sender, RoutedEventArgs e) => Grub.IsMatchCaseEnabled = true;
 
         private void MatchCase_Unchecked(object sender, RoutedEventArgs e) => Grub.IsMatchCaseEnabled = false;
-
-        private void GoogleButton_Click(object sender, RoutedEventArgs e)
-        {
-            if (searchBox.Text.Equals("Search..") || string.IsNullOrEmpty(searchBox.Text))
-                return;
-
-            var url = "https://www.google.com/search?q=" + Uri.EscapeDataString(searchBox.Text) + " BIOS setting.";
-            Process.Start(new ProcessStartInfo
-            {
-                FileName = url,
-                UseShellExecute = true
-            });
-        }
     }
 }
