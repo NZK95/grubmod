@@ -1,6 +1,6 @@
 ﻿namespace grubmod
 {
-    public record OptionFields(
+    internal record OptionFields(
          string OptionType,
          string VarName,
          string VarOffset,
@@ -9,6 +9,7 @@
          string VarSize,
          string VarDescription,
          string VarBIOSDefaultValue,
+         int VarIndex,
          List<string> VarValues
      );
 }

@@ -19,7 +19,7 @@ using static System.Net.Mime.MediaTypeNames;
 
 namespace grubmod
 {
-    public class ComboOrTextTemplateSelector : DataTemplateSelector
+    internal class ComboOrTextTemplateSelector : DataTemplateSelector
     {
         public DataTemplate ComboTemplate { get; set; }
         public DataTemplate TextTemplate { get; set; }
@@ -176,7 +176,7 @@ namespace grubmod
         {
             var gridview = optionsListView.View as GridView;
             var index = gridview.Columns.Contains(DescriptionColumnValue) ? gridview.Columns.Count - 1 :
-                gridview.Columns.Count ;
+                gridview.Columns.Count;
 
             if (!gridview.Columns.Contains(BIOSDefaultValueColumnValue))
                 gridview.Columns.Insert(index, BIOSDefaultValueColumnValue);
@@ -237,7 +237,7 @@ namespace grubmod
             Process.Start(new ProcessStartInfo
             {
                 FileName = url,
-                UseShellExecute = true 
+                UseShellExecute = true
             });
         }
     }

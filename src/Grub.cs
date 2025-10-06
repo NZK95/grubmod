@@ -3,7 +3,7 @@ using System.IO;
 
 namespace grubmod
 {
-    public class Grub
+    internal class Grub
     {
         public static ObservableCollection<Option> DefaultOptions { get; set; } = BIOSFileParser.ExtractInformation().GetAwaiter().GetResult();
         public static ObservableCollection<Option> Options { get; set; } = DefaultOptions;
@@ -14,7 +14,7 @@ namespace grubmod
 
         public static void LogChanges(string varName, string varOffset, string hexvalue, string varSize, string varSectionName)
         {
-            const string WATERMARK = "# (https://github.com/NZK95)";
+            const string WATERMARK = "# (https://www.github.com/NZK95)";
             const string SCRIPT_COMMAND_PREFIX = "setup_var.efi";
 
             var command = $"{SCRIPT_COMMAND_PREFIX} {varOffset} {hexvalue} -s {varSize} -n {varSectionName}";

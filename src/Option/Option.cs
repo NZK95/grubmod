@@ -2,7 +2,7 @@
 
 namespace grubmod
 {
-    public class Option : INotifyPropertyChanged
+    internal class Option : INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler? PropertyChanged;
         protected void OnPropertyChanged(string prop) => PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(prop));
@@ -20,8 +20,8 @@ namespace grubmod
                 _varSelectedValue = value;
                 OnPropertyChanged(nameof(VarSelectedValue));
 
-                if (Helpers.AllNotNull(Fields.VarName, Fields.VarOffset, _varSelectedValue, Fields.VarSize, Fields.VarSectionName))
-                    Grub.LogChanges(Fields.VarName, Fields.VarOffset, _varSelectedValue, Fields.VarSize, Fields.VarSectionName);
+                if (Helpers.AllNotNull(Fields.VarName, Fields.VarOffset, BIOSFileParser.ExtractHexValue(this), Fields.VarSize, Fields.VarSectionName))
+                    Grub.LogChanges(Fields.VarName, Fields.VarOffset, BIOSFileParser.ExtractHexValue(this), Fields.VarSize, Fields.VarSectionName);
             }
         }
 
@@ -37,11 +37,11 @@ namespace grubmod
                 ? Fields.VarBIOSDefaultValue
                 : Fields.VarValues.FirstOrDefault() ?? string.Empty,
 
-            Labels.NUMERIC_OPTION_DEFINITION => !string.IsNullOrEmpty(Fields.VarBIOSDefaultValue) && Fields.VarBIOSDefaultValue != "N/A"
+            Labels.NUMERIC_OPTION_DEFINITION => !string.IsNullOrEmpty(Fields.VarBIOSDefaultValue) && Fields.VarBIOSDefaultValue != Labels.NOT_FOUND
                 ? Fields.VarBIOSDefaultValue
                 : string.Empty,
 
-            Labels.CHECKBOX_OPTION_DEFINITION => !string.IsNullOrEmpty(Fields.VarBIOSDefaultValue) && Fields.VarBIOSDefaultValue != "N/A"
+            Labels.CHECKBOX_OPTION_DEFINITION => !string.IsNullOrEmpty(Fields.VarBIOSDefaultValue) && Fields.VarBIOSDefaultValue != Labels.NOT_FOUND
                 ? (Fields.VarBIOSDefaultValue.Equals("Enabled") ? "True" : "False")
                 : string.Empty,
 
