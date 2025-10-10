@@ -21,7 +21,7 @@ namespace grubmod
                 OnPropertyChanged(nameof(VarSelectedValue));
 
                 if (Helpers.AllNotNull(Fields.VarName, Fields.VarOffset, BIOSFileParser.ExtractHexValue(this), Fields.VarSize, Fields.VarSectionName))
-                    Grub.LogChanges(Fields.VarName, Fields.VarOffset, BIOSFileParser.ExtractHexValue(this), Fields.VarSize, Fields.VarSectionName);
+                    Grub.LogChanges(Fields.VarName, Fields.VarOffset, BIOSFileParser.ExtractHexValue(this), _varSelectedValue, Fields.VarSize, Fields.VarSectionName);
             }
         }
 

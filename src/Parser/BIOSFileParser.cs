@@ -8,7 +8,7 @@ namespace grubmod
 {
     internal class BIOSFileParser
     {
-        public static List<string> Lines { get; private set; } = File.ReadAllLines(@"C:\Users\User\Desktop\BIOS\123.txt").ToList();
+        public static List<string> Lines { get; set; } = File.ReadAllLines(Grub.Path).ToList();
 
         public async static Task<ObservableCollection<Option>> ExtractInformation()
         {
@@ -90,7 +90,7 @@ namespace grubmod
         private static string ExtractDefaultValueForCheckBoxes(List<string> lines) =>
           string.Join("", (from line in lines
                            where line.Contains(Labels.DEFAULT)
-                           let startIndex = line.IndexOf(Labels.DEFAULT) + Labels.DEFAULT.Length
+                           let startIndex = line.IndexOf(Labels.DEFAULT) + Labels.DEFAULT.Length + 1
                            let endIndex = line.IndexOf(',', startIndex)
                            select line[startIndex..endIndex].Trim()));
 
