@@ -3,6 +3,7 @@ using System.IO;
 using System.Text.RegularExpressions;
 using System.Windows.Shapes;
 using System.Collections.Immutable;
+using System.Windows;
 
 namespace grubmod
 {
@@ -10,8 +11,10 @@ namespace grubmod
     {
         public static List<string> Lines { get; set; } = File.ReadAllLines(Grub.Path).ToList();
 
-        public async static Task<ObservableCollection<Option>> ExtractInformation()
+        public async static Task<ObservableCollection<Option>> ExtractData()
         {
+            Logger.Log($"ExtractData method is used", LogType.Information);
+
             var options = new ObservableCollection<Option>();
 
             for (var i = 0; i < Lines.Count; i++)
@@ -35,12 +38,13 @@ namespace grubmod
 
                     options.Add(new Option(new OptionFields(optionType, varName, varOffset, varStoreId, varSectionName, varSize, varDescription, varDefaultValue, varIndex, varValues)));
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
-                    //Logger.Log();
+                    Logger.Log($"{ex.Message} - {ex.Source}", LogType.Exception);
                 }
             }
 
+            Logger.Log($"ListView with options is initialized.", LogType.SuccessfulOperation);
             return new ObservableCollection<Option>(options.Distinct());
         }
 

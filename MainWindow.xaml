@@ -117,24 +117,25 @@
                 <Grid Grid.Row="0" Margin="100 15 40 0" VerticalAlignment="Top">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="Auto"></ColumnDefinition>
+                        <ColumnDefinition Width="Auto"></ColumnDefinition>
                         <ColumnDefinition Width="25"></ColumnDefinition>
                         <ColumnDefinition Width="*"></ColumnDefinition>
                         <ColumnDefinition Width="25"></ColumnDefinition>
                         <ColumnDefinition Width="Auto"></ColumnDefinition>
                     </Grid.ColumnDefinitions>
 
-                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Stretch" VerticalAlignment="Center" Grid.Column="0">
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Stretch" VerticalAlignment="Center" Grid.Column="1">
                         <RadioButton x:Name="parametrRadioButton" Height="30" Content="Parametr" IsChecked="True" Background="#000000" Foreground="White" GroupName="SearchMode" Margin="0 0 10 0"/>
                         <RadioButton Height="30" Content="Description" Background="#000000" Foreground="White" GroupName="SearchMode" Margin="0 0 25 0"/>
 
                         <Button Content="Google" MinWidth="100" Height="30" Margin="0 0 5 0" Background="#000000" Foreground="White" BorderBrush="#222222" Click="GoogleButton_Click"/>
                         <Button Content="Clear" MinWidth="100" Height="30" Margin="0 0 5 0" Background="#000000" Foreground="White" BorderBrush="#222222" Click="ClearButton_Click"/>
-                        <Button Content="Search" MinWidth="100" Height="30" Margin="0 0 5 0" Background="#000000" Foreground="White" BorderBrush="#222222" Click="SearchButton_Click"/>
+                        <Button Content="Search" MinWidth="100" Height="30" Margin="0 0 5 0" Background="#000000" Foreground="White" BorderBrush="#222222" Click="AsyncSearchButton_Click"/>
                     </StackPanel>
 
                     <TextBox x:Name="searchBox" Margin="0 0 0 0" HorizontalAlignment="Stretch" VerticalAlignment="Center"
    MinWidth="500"
-   Grid.Column="2"
+   Grid.Column="3"
    Height="30"
    Padding="5"
    Background="#111111"
@@ -145,7 +146,7 @@
    GotFocus="SearchBoxGotFocus"
    LostFocus="SearchBoxLostFocus"/>
 
-                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Stretch" VerticalAlignment="Center" Grid.Column="4">
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Stretch" VerticalAlignment="Center" Grid.Column="5">
                         <CheckBox Width="30" Height="30" Checked="MatchCase_Checked" Unchecked="MatchCase_Unchecked"/>
                         <TextBlock Foreground="White" Height="30" Text="Match case" Margin="0 0 20 0"/>
 
@@ -250,13 +251,13 @@
                     <RowDefinition Height="Auto"></RowDefinition>
                     <RowDefinition Height="Auto"></RowDefinition>
                 </Grid.RowDefinitions>
-                
+
                 <TextBlock Grid.Row="0" Margin="10,10,0,0" Text="grubmod" Foreground="White"
                            HorizontalAlignment="Left" VerticalAlignment="Top"
                            FontSize="18" FontWeight="Bold"/>
 
-                <TextBlock Grid.Row="1" Margin="10 5 0 0"><Hyperlink NavigateUri="https://github.com/NZK95" RequestNavigate="Hyperlink_RequestNavigateToAuthor">github.com/NZK95</Hyperlink></TextBlock>
-                <TextBlock Grid.Row="2" Margin="10"><Hyperlink NavigateUri="https://github.com/NZK95/grubmod" RequestNavigate="Hyperlink_RequestNavigateToGrubmod">github.com/NZK95/grubmod</Hyperlink></TextBlock>
+                <TextBlock Grid.Row="1" Margin="10 5 0 0"><Hyperlink NavigateUri="https://github.com/NZK95" RequestNavigate="AuthorLink">github.com/NZK95</Hyperlink></TextBlock>
+                <TextBlock Grid.Row="2" Margin="10"><Hyperlink NavigateUri="https://github.com/NZK95/grubmod" RequestNavigate="GrubmodLink">github.com/NZK95/grubmod</Hyperlink></TextBlock>
             </Grid>
         </TabItem>
     </TabControl>
