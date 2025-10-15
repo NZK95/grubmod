@@ -13,3 +13,8 @@ BIOS/UEFI по умолчанию показывает пользователю 
 - **Генерация и исполнение скриптов для автоматизации изменений.**  <br>
 
 ## 📄 Инструкции
+1. Скачайте ТЕКУЩУЮ версию прошивки вашего биоса и поместите его в робочую папку.
+
+## Credits
+[UEFI-Editor by BoringBoredom](https://github.com/BoringBoredom/UEFI-Editor?tab=readme-ov-file#how-to-change-hidden-settings-without-flashing-a-modded-bios)
+[grub-mod-setup_var by datasone](https://github.com/datasone/grub-mod-setup_var)
