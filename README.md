@@ -61,6 +61,9 @@ BIOS/UEFI по умолчанию показывает пользователю 
 - Все числовые параметры. <br>
 - Все логические параметры. <br>
 
-## Credits
+## Благодарности
  - [UEFI-Editor by BoringBoredom](https://github.com/BoringBoredom/UEFI-Editor?tab=readme-ov-file#how-to-change-hidden-settings-without-flashing-a-modded-bios) <br>
  - [grub-mod-setup_var by datasone](https://github.com/datasone/grub-mod-setup_var)
+
+## Устранение неполадок
+Если вы столкнулись с ошибками - сообщите о проблеме через систему отслеживания ошибок.
