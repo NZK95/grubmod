@@ -40,6 +40,11 @@ BIOS/UEFI по умолчанию показывает пользователю 
 - **Build config** - позволяет создать конфиг на базе выбранных параметров.
 - **Load config** - позволяет загрузить и применить текстовый конфиг с параметрами.
 
+В правом нижнем углу, есть 4 опции, которые определяют какой тип настроек будет показан.
+1. Все параметры. <br>
+2. Все параметры с выборычными значениями. <br>
+3. Все числовые параметры. <br>
+4. Все логические параметры. <br>
 
 ## Credits
  - [UEFI-Editor by BoringBoredom](https://github.com/BoringBoredom/UEFI-Editor?tab=readme-ov-file#how-to-change-hidden-settings-without-flashing-a-modded-bios) <br>
