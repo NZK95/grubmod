@@ -22,8 +22,8 @@ BIOS/UEFI по умолчанию показывает пользователю 
 6. После поиска, перейдите в любое вхождение.
 7. Выберите файл ```PE32 image section```  в разделе ```Setup``` , и нажмите на него ПКМ.
 8. В открытом окне нажмите ```Extract as is.```
- ![]([https://github.com/NZK95/grubmod/assets/images/Usage/Usage #2.png](https://github.com/NZK95/grubmod/tree/master/assets/images/Usage/Usage #2.png))
-9. Сохраните файл в робочую директорию.
+[](https://github.com/NZK95/grubmod/blob/master/assets/images/Usage/Usage%20%232.png?raw=true)
+](https://github.com/NZK95/grubmod/blob/master/assets/images/Usage/Usage%20%231.png)9. Сохраните файл в робочую директорию.
 ## Credits
 [UEFI-Editor by BoringBoredom](https://github.com/BoringBoredom/UEFI-Editor?tab=readme-ov-file#how-to-change-hidden-settings-without-flashing-a-modded-bios) <br>
 [grub-mod-setup_var by datasone](https://github.com/datasone/grub-mod-setup_var)
