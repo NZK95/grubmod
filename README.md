@@ -79,10 +79,13 @@ BIOS/UEFI по умолчанию показывает пользователю 
 ```bash
 .\setupvar-script.nsh
  ```
+4. Подождите пока скрипт завершит свое выполнение.
+5. Выключите компьютер через кнопку на корпусе, для применения изменений.
 
 ## Благодарности
  - [UEFI-Editor by BoringBoredom](https://github.com/BoringBoredom/UEFI-Editor?tab=readme-ov-file#how-to-change-hidden-settings-without-flashing-a-modded-bios) <br>
- - [grub-mod-setup_var by datasone](https://github.com/datasone/grub-mod-setup_var)
-
+ - [grub-mod-setup_var by datasone](https://github.com/datasone/grub-mod-setup_var) <br>
+ - [setup_var.efi](https://github.com/datasone/setup_var.efi?tab=readme-ov-file) <br>
+ 
 ## Устранение неполадок
 Если вы столкнулись с ошибками - сообщите о проблеме через систему отслеживания ошибок.
