@@ -63,6 +63,23 @@ BIOS/UEFI по умолчанию показывает пользователю 
 - Все числовые параметры. <br>
 - Все логические параметры. <br>
 
+### 3. Подготовка USB-накопителя
+1. Oтформатируйте свой накопитель как `FAT32`.
+2. Скачайте UEFI файл из одного из этих источников:
+- [UEFI-Shell](https://github.com/pbatard/UEFI-Shell/releases/latest) (`shellx64.efi`)
+- Official [EDK2 stable releases](https://github.com/tianocore/edk2/releases/download/edk2-stable202002/ShellBinPkg.zip) (`ShellBinPkg > UefiShell > X64 > Shell.efi`); Этот источник может быть устаревшим, не рекомандую его к использованию.
+4. Переименуйте скачанный UEFI файл на `BOOTX64.EFI` и поместите его по следующему пути: `USB:\EFI\BOOT`.
+5. Поместите `setup_var.efi` и `setupvar-script.nsh` в корень USB-накопителя.
+
+### 4. Применение скрипта в GRUB
+1. Загрузитесь с флешки в BOOT.
+2. Выберите вашу USB-накопитель, введя его идентификатор в системе:
+- Просмотрите таблицу отображения (Mapping Table), которая отображается по умолчанию. Чтобы показать её снова - введите map в консоль. Скорее всего, это будет FS0.
+3. Запустите скрипт с помощью следующей команды:
+```bash
+.\setupvar-script.nsh
+ ```
+
 ## Благодарности
  - [UEFI-Editor by BoringBoredom](https://github.com/BoringBoredom/UEFI-Editor?tab=readme-ov-file#how-to-change-hidden-settings-without-flashing-a-modded-bios) <br>
  - [grub-mod-setup_var by datasone](https://github.com/datasone/grub-mod-setup_var)
