@@ -28,7 +28,7 @@ namespace grubmod
                 ApplyConfig(pairsOptionValue);
 
                 MessageBox.Show("Config loaded. Analyze the logs.", $"Loaded {pairsOptionValue.Count} options", MessageBoxButton.OK, MessageBoxImage.Information);
-                Logger.Log("Config loaded successfully!", LogType.SuccessfulOperation);
+                Logger.Log("Config loaded successfully.", LogType.SuccessfulOperation);
             }
 
             catch (Exception ex)
