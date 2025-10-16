@@ -1,4 +1,4 @@
-# grubmod
+<img width="402" height="266" alt="Usage #1" src="https://github.com/user-attachments/assets/dda92db8-fee9-4c11-a072-3e7bb5cdb1c4" /># grubmod
 BIOS/UEFI по умолчанию показывает пользователю лишь малую часть своих переменных (параметров). Большинство из них спрятаны и обычные пользовательский интерфейс их не видит. Эти скрытые опции отвечают за всё: от таймингов памяти до параметров питания процессора. <br>
 **Переменные BIOS/UEFI** — это хранящиеся в энергонезависимой памяти (NVRAM) пары “ключ–значение”. Производители обычно блокируют доступ к этим переменным. <br>
 
@@ -18,9 +18,11 @@ BIOS/UEFI по умолчанию показывает пользователю 
 3. Передвиньте файл с прошивкой в ```UEFIToolNE.exe.``` 
 4. В открытом окне нажмите комбинацию клавиш ```Ctrl + F``` .
 5. Выберите секцию ```Text``` , и напишите имя любого параметра например: ```ASPM``` .
+ ![](https://github.com/NZK95/grubmod/assets/images/Usage/Usage #1.png)
 6. После поиска, перейдите в любое вхождение.
 7. Выберите файл ```PE32 image section```  в разделе ```Setup``` , и нажмите на него ПКМ.
-8. В открытом окне нажмите ```Extract as is.``` 
+8. В открытом окне нажмите ```Extract as is.```
+ ![](https://github.com/NZK95/grubmod/assets/images/Usage/Usage #2.png)
 9. Сохраните файл в робочую директорию.
 ## Credits
 [UEFI-Editor by BoringBoredom](https://github.com/BoringBoredom/UEFI-Editor?tab=readme-ov-file#how-to-change-hidden-settings-without-flashing-a-modded-bios) <br>
