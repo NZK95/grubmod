@@ -15,16 +15,16 @@ BIOS/UEFI по умолчанию показывает пользователю 
 ### 1. Приготовления робочих файлов
 1. Скачайте последний релиз ```grubmod.```  <br>
 2. Скачайте ТЕКУЩУЮ версию прошивки вашего биоса и поместите его в робочую папку. <br>
-3. Передвиньте файл с прошивкой в ```UEFIToolNE.exe.```  <br>
-4. В открытом окне нажмите комбинацию клавиш ```Ctrl + F``` . <br>
-5. Выберите секцию ```Text``` , и напишите имя любого параметра например: ```ASPM``` . <br>
+3. Передвиньте файл с прошивкой в ```UEFIToolNE.exe```.  <br>
+4. В открытом окне нажмите комбинацию клавиш ```Ctrl + F```. <br>
+5. Выберите секцию ```Text```, и напишите имя любого параметра например: ```ASPM```. <br>
    
 <p align="left">
   <img src="https://github.com/NZK95/grubmod/blob/master/assets/images/Usage/%231.png?raw=true">
 </p>
 
 6. После поиска, перейдите в любое вхождение. <br>
-7. Выберите файл ```PE32 image section```  в разделе ```Setup``` , и нажмите на него ПКМ. <br>
+7. Выберите файл ```PE32 image section```  в разделе ```Setup```, и нажмите на него ПКМ. <br>
 8. В открытом окне нажмите ```Extract as is.``` <br>
 
 <p align="left">
@@ -36,5 +36,5 @@ BIOS/UEFI по умолчанию показывает пользователю 
 ### 2. Использование grubmod
     
 ## Credits
-[UEFI-Editor by BoringBoredom](https://github.com/BoringBoredom/UEFI-Editor?tab=readme-ov-file#how-to-change-hidden-settings-without-flashing-a-modded-bios) <br>
-[grub-mod-setup_var by datasone](https://github.com/datasone/grub-mod-setup_var)
+ - [UEFI-Editor by BoringBoredom](https://github.com/BoringBoredom/UEFI-Editor?tab=readme-ov-file#how-to-change-hidden-settings-without-flashing-a-modded-bios) <br>
+ - [grub-mod-setup_var by datasone](https://github.com/datasone/grub-mod-setup_var)
