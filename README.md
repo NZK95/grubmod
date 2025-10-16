@@ -19,16 +19,15 @@ BIOS/UEFI по умолчанию показывает пользователю 
 5. Выберите секцию ```Text``` , и напишите имя любого параметра например: ```ASPM``` .
    
 <p align="left">
-  <img src="https://github.com/NZK95/grubmod/blob/master/assets/images/Usage/%231.png?raw=true" width="300">
+  <img src="https://github.com/NZK95/grubmod/blob/master/assets/images/Usage/%231.png?raw=true">
 </p>
 
- ![](https://github.com/NZK95/grubmod/assets/images/Usage/Usage #1.png)
 7. После поиска, перейдите в любое вхождение.
 8. Выберите файл ```PE32 image section```  в разделе ```Setup``` , и нажмите на него ПКМ.
 9. В открытом окне нажмите ```Extract as is.```
 
 <p align="left">
-  <img src="https://github.com/NZK95/grubmod/blob/master/assets/images/Usage/%232.png?raw=true" width="300">
+  <img src="https://github.com/NZK95/grubmod/blob/master/assets/images/Usage/%232.png?raw=true">
 </p>
 
 10. Сохраните файл в робочую директорию.
