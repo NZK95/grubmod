@@ -21,7 +21,9 @@ BIOS/UEFI по умолчанию показывает пользователю 
 6. После поиска, перейдите в любое вхождение.
 7. Выберите файл ```PE32 image section```  в разделе ```Setup``` , и нажмите на него ПКМ.
 8. В открытом окне нажмите ```Extract as is.```
-[](https://github.com/NZK95/grubmod/blob/master/assets/images/Usage/#2.png?raw=true) <br>
+![Usage 1](https://raw.githubusercontent.com/NZK95/grubmod/master/assets/images/Usage/%231.png)
+![Usage 2](https://raw.githubusercontent.com/NZK95/grubmod/master/assets/images/Usage/%232.png)
+
 9. Сохраните файл в робочую директорию.
 10. 
 ## Credits
