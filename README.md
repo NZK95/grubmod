@@ -17,15 +17,22 @@ BIOS/UEFI по умолчанию показывает пользователю 
 3. Передвиньте файл с прошивкой в ```UEFIToolNE.exe.``` 
 4. В открытом окне нажмите комбинацию клавиш ```Ctrl + F``` .
 5. Выберите секцию ```Text``` , и напишите имя любого параметра например: ```ASPM``` .
- ![](https://github.com/NZK95/grubmod/assets/images/Usage/Usage #1.png)
-6. После поиска, перейдите в любое вхождение.
-7. Выберите файл ```PE32 image section```  в разделе ```Setup``` , и нажмите на него ПКМ.
-8. В открытом окне нажмите ```Extract as is.```
-![Usage 1](https://github.com/NZK95/grubmod/blob/master/assets/images/Usage/%231.png?raw=true)
-![Usage 2](https://github.com/NZK95/grubmod/blob/master/assets/images/Usage/%232.png?raw=true)
+   
+<p align="left">
+  <img src="https://github.com/NZK95/grubmod/blob/master/assets/images/Usage/%231.png?raw=true" width="300">
+</p>
 
-9. Сохраните файл в робочую директорию.
-10. 
+ ![](https://github.com/NZK95/grubmod/assets/images/Usage/Usage #1.png)
+7. После поиска, перейдите в любое вхождение.
+8. Выберите файл ```PE32 image section```  в разделе ```Setup``` , и нажмите на него ПКМ.
+9. В открытом окне нажмите ```Extract as is.```
+
+<p align="left">
+  <img src="https://github.com/NZK95/grubmod/blob/master/assets/images/Usage/%232.png?raw=true" width="300">
+</p>
+
+10. Сохраните файл в робочую директорию.
+11. 
 ## Credits
 [UEFI-Editor by BoringBoredom](https://github.com/BoringBoredom/UEFI-Editor?tab=readme-ov-file#how-to-change-hidden-settings-without-flashing-a-modded-bios) <br>
 [grub-mod-setup_var by datasone](https://github.com/datasone/grub-mod-setup_var)
