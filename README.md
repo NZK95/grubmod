@@ -87,7 +87,7 @@ BIOS/UEFI по умолчанию показывает пользователю 
 ```bash
 ИМЯ ПАРАМЕТРА | ЖЕЛАЕМОЕ ЗНАЧЕНИЕ
  ```
-В имени конфига, должно быть слово ```conig```. Примеры:  ```my-config.txt```, ```Configtest.txt```.
+Тип файла конфига должен быть  ```.txt```, а в имени конфига, должно присутствовать слово ```config```. Примеры:  ```my-config.txt```, ```Configtest.txt```.
 
 ## Благодарности
  - [UEFI-Editor by BoringBoredom](https://github.com/BoringBoredom/UEFI-Editor?tab=readme-ov-file#how-to-change-hidden-settings-without-flashing-a-modded-bios) <br>
