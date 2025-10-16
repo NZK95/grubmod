@@ -11,6 +11,7 @@ namespace grubmod
 
         public static IReadOnlyList<string> ReservedStrings { get; private set; } = new List<string>() { Labels.AUTHOR_WATERMARK, Labels.GRUBMOD_LINK_WATERMARK, Labels.SCRIPT_TEMPLATE + "\n" };
         public static List<string> LoggedChanges { get; private set; } = new List<string>();
+        public static List<string> OptionValueStrings { get; private set; } = new List<string>();
 
         public static bool IsMatchCaseEnabled { get; set; } = false;
 
@@ -21,6 +22,7 @@ namespace grubmod
             var script = $"{comment}\n{command}";
 
             LoggedChanges.Add(script);
+            OptionValueStrings.Add($"{varName} | {textValue}");
             Logger.Log("Changes are logged.", LogType.SuccessfulOperation);
         }
     }

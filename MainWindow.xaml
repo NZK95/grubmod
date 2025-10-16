@@ -207,7 +207,7 @@
                     </StackPanel>
 
                     <StackPanel  Grid.Row="1" Grid.Column="0" Orientation="Horizontal" VerticalAlignment="Bottom" HorizontalAlignment="Right"  >
-                        <Button Margin="10" MinWidth="150" Height="40" Content="Build config" BorderBrush="#222222" Foreground ="White" Background="#000000"/>
+                        <Button Margin="10" MinWidth="150" Height="40" Content="Build config" BorderBrush="#222222" Foreground ="White" Background="#000000" Click="BuildConfig_Click"/>
                         <Button MinWidth="150" Height="40" Content="Import file" BorderBrush="#222222" Foreground ="White" Background="#000000" Click="ImportFile_Click"/>
                     </StackPanel>
 

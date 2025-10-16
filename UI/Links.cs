@@ -11,7 +11,7 @@ namespace grubmod
     {
         private void GrubmodLink(object o, RequestNavigateEventArgs r)
         {
-            var url = "https://www.github.com/NZK95/grubmod/";
+            var url = Labels.GRUBMOD_LINK;
             Process.Start(new ProcessStartInfo
             {
                 FileName = url,
@@ -23,7 +23,7 @@ namespace grubmod
 
         private void AuthorLink(object o, RequestNavigateEventArgs r)
         {
-            var url = "https://www.github.com/NZK95";
+            var url = Labels.AUTHOR_LINK;
             Process.Start(new ProcessStartInfo
             {
                 FileName = url,

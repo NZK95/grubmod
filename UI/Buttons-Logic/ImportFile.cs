@@ -33,7 +33,7 @@ namespace grubmod
             }
         }
 
-        private (bool Success, string Path) GetUserPath(string startsWithPattern)
+        private (bool Success, string Path) GetUserPath(string pattern)
         {
             var openFileDialog = new OpenFileDialog() { Filter = "Text files (*.txt)|*.txt|All files (*.*)|*.*" };
             bool? result = openFileDialog.ShowDialog();
@@ -45,7 +45,7 @@ namespace grubmod
                 return (false, "");
             }
 
-            if (!name.StartsWith(startsWithPattern))
+            if (!name.Contains(pattern, StringComparison.OrdinalIgnoreCase))
             {
                 MessageBox.Show("Invalid filetype / name.", string.Empty, MessageBoxButton.OK, MessageBoxImage.Warning);
                 Logger.Log("Invalid filetype / name.", LogType.FailedOperation);
