@@ -14,10 +14,8 @@ namespace grubmod
         public MainWindow()
         {
             InitializeComponent();
-            optionsListView.ItemsSource = Grub.DefaultOptions;
             DataContext = ViewModel;
             HideColumns();
-            MessageBox.Show($"Found {Grub.DefaultOptions.Count} options.", "All data is loaded", MessageBoxButton.OK, MessageBoxImage.Information);
         }
 
         private void Window_KeyDown(object sender, KeyEventArgs e)
@@ -40,5 +38,7 @@ namespace grubmod
                 e.Handled = true;
             }
         }
+
+  
     }
 }

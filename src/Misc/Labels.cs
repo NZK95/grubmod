@@ -31,7 +31,7 @@
         public const string GRUBMOD_LINK = "https://www.github.com/NZK95/grubmod";
         public const string AUTHOR_LINK = "https://www.github.com/NZK95";
         public const string AUTHOR_WATERMARK = $"# ({AUTHOR_LINK})";
-        public const string GRUBMOD_LINK_WATERMARK = $"# ({AUTHOR_WATERMARK})";
+        public const string GRUBMOD_WATERMARK = $"# ({GRUBMOD_LINK})";
 
         public const string SEARCH = "Search..";
         public const string GOOGLE_SEARCH_PATTERN = " BIOS setting.";

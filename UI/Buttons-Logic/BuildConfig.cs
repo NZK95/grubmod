@@ -15,22 +15,33 @@ namespace grubmod
                 return;
             }
 
-            var path = @"C:\Users\User\Desktop\builded-config.txt";
+            var path = Grub.PathToConfig;
 
-            if (!Helpers.IsFirstLineOfFileContainsTemplate(path, Grub.ReservedStrings.First()))
-                InsertScriptTemplate(path);
+            try
+            {
+                if (!Helpers.IsFirstLineOfFileContainsTemplate(path, Grub.ReservedStrings.First()))
+                    InsertScriptTemplate(path);
 
-            File.AppendAllLines(path, Grub.OptionValueStrings);
-            File.WriteAllLines(path, ChooseOnlyTheLastValues(path));
+                File.AppendAllLines(path, Grub.OptionValueStrings);
+                var finalLines = ChooseOnlyTheLastValues(path);
+                File.WriteAllLines(path, finalLines);
 
-            MessageBox.Show($"Config file builded to - {path}.", $"Builded {Grub.OptionValueStrings.Count} options.", MessageBoxButton.OK, MessageBoxImage.Information);
-            Logger.Log($"Config file builded to - {path}. Builded {Grub.OptionValueStrings.Count} options.", LogType.SuccessfulOperation);
+                MessageBox.Show($"Config file built to - {path}.", $"Built {Grub.OptionValueStrings.Count} options.", MessageBoxButton.OK, MessageBoxImage.Information);
+                Logger.Log($"Config file built to - {path}. Built {Grub.OptionValueStrings.Count} options.", LogType.SuccessfulOperation);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error occurred", MessageBoxButton.OK, MessageBoxImage.Error);
+                Logger.Log($"{ex.Message} - {ex.Source}", LogType.Exception);
+            }
         }
 
         private List<string> ChooseOnlyTheLastValues(string path)
         {
             var lines = File.ReadAllLines(path).ToList();
-            var onlyNames = lines.Skip(3).Where(line => !string.IsNullOrEmpty(line)).Select(x => x.Split('|')[0].Trim()).ToList();
+
+            var onlyNames = lines.Skip(Grub.ReservedStrings.Count).Where(line => !string.IsNullOrEmpty(line)).
+                Select(x => x.Split('|')[0].Trim()).ToList();
             var hasDuplicates = !onlyNames.Count().Equals(onlyNames.Distinct().Count());
 
             if (!hasDuplicates)

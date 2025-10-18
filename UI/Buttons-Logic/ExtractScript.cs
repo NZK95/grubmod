@@ -14,7 +14,7 @@ namespace grubmod
                 if (!Helpers.AreThereChanges())
                     return;
 
-                var path = @"C:\Users\User\Desktop\setupvar-script.nsh";
+                var path = Grub.PathToScript;
 
                 if (!Helpers.IsFirstLineOfFileContainsTemplate(path, Grub.ReservedStrings.First()))
                     InsertScriptTemplate(path);
@@ -44,8 +44,7 @@ namespace grubmod
 
             if (!lines.Contains(Labels.END_OF_SCRIPT))
                 lines.Add("\n" + Labels.END_OF_SCRIPT);
-
-            else if (!lines.ElementAt(lines.Count - 1).Equals(Labels.END_OF_SCRIPT))
+            else if (!lines[^1].Equals(Labels.END_OF_SCRIPT))
             {
                 lines.Remove(Labels.END_OF_SCRIPT);
                 lines.Add("\n" + Labels.END_OF_SCRIPT);
@@ -57,7 +56,10 @@ namespace grubmod
         private void SelectTheLastValue(string path)
         {
             var lines = File.ReadAllLines(path).ToList();
-            var commentedLines = lines.Skip(3).Where(line => line.StartsWith('#')).ToList();
+
+            var commentedLines = lines.Skip(Grub.ReservedStrings.Count)
+                .Where(line => line.StartsWith('#')).ToList();
+
             var names = (from line in commentedLines
                          let endIndex = line.IndexOf('-')
                          select line[..endIndex].Trim()).ToList();
@@ -133,12 +135,6 @@ namespace grubmod
             lines.Insert(lines.Count - 1, string.Empty);
 
             return lines;
-        }
-
-        private void RemoveDefaultValues(string path)
-        {
-            var lines = File.ReadAllLines(path).ToList();
-            var commentedLines = lines.Skip(3).Where(line => line.StartsWith('#')).ToList();
         }
     }
 }

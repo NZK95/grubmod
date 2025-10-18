@@ -16,21 +16,19 @@ namespace grubmod
     internal class Logger
     {
         private static readonly string _firstLineTemplate = PadString("| DateTime |", "| LogType |", "| Message |");
-        private static string _path = @$"C:\Users\User\Desktop\log-file({DateTime.Now:yyyy-MM-dd_HH-mm-ss}).txt";
-
 
         public static string PadString(params string[] lines) =>
             string.Concat(lines.Select(line => line.PadRight(30)));
 
         public static void Log(string message, LogType logType)
         {
-            if (!Helpers.IsFirstLineOfFileContainsTemplate(_path, _firstLineTemplate))
+            if (!Helpers.IsFirstLineOfFileContainsTemplate(Grub.PathToLogs, _firstLineTemplate))
                 InsertFileTemplate();
 
-            File.AppendAllText(_path, new Log(DateTime.Now, logType, message).ToString() + "\n");
+            File.AppendAllText(Grub.PathToLogs, new Log(DateTime.Now, logType, message).ToString() + "\n");
         }
 
         private static void InsertFileTemplate() =>
-            File.WriteAllText(_path, _firstLineTemplate + "\n\n");
+            File.WriteAllText(Grub.PathToLogs, _firstLineTemplate + "\n\n");
     }
 }

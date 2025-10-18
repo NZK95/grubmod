@@ -15,7 +15,7 @@ namespace grubmod
         {
             if (Grub.LoggedChanges.Count <= 0)
             {
-                MessageBox.Show("Impossible to export.", "No changed options.", MessageBoxButton.OK, MessageBoxImage.Warning);
+                MessageBox.Show("Impossible to export.", "No changed options", MessageBoxButton.OK, MessageBoxImage.Warning);
                 Logger.Log("No changed options! Impossible to export.", LogType.Warning);
                 return false;
             }
@@ -27,8 +27,8 @@ namespace grubmod
         {
             if (Grub.DefaultOptions.Count.Equals(0))
             {
-                MessageBox.Show("Load the data!", string.Empty, MessageBoxButton.OK, MessageBoxImage.Warning);
-                Logger.Log("No data loaded.", LogType.Warning);
+                MessageBox.Show("Load the data!", "Nothing to load", MessageBoxButton.OK, MessageBoxImage.Warning);
+                Logger.Log("Data not loaded yet - aborting operation.", LogType.Warning);
                 return false;
             }
 

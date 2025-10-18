@@ -9,7 +9,7 @@ namespace grubmod
 {
     internal class BIOSFileParser
     {
-        public static List<string> Lines { get; set; } = File.ReadAllLines(Grub.Path).ToList();
+        public static List<string> Lines { get; set; } = new List<string>();
 
         public async static Task<ObservableCollection<Option>> ExtractData()
         {

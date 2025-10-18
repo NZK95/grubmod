@@ -5,11 +5,16 @@ namespace grubmod
 {
     internal class Grub
     {
-        public static string Path { get; set; } = @"C:\Users\User\Desktop\BIOS\files\Section_PE32_image_Setup_Setup.sct.0.0.en-US.uefi.ifr.txt";
-        public static ObservableCollection<Option> DefaultOptions { get; set; } = BIOSFileParser.ExtractData().GetAwaiter().GetResult();
+        public static string BasePath { get; } = AppContext.BaseDirectory;
+        public static string PathToMainFile { get; set; } = string.Empty;
+        public static string PathToLogs { get; } = @$"{BasePath}logs-file({DateTime.Now:yyyy-MM-dd_HH-mm-ss}).txt";
+        public static string PathToConfig { get; } = @$"{BasePath}builded-config.txt";
+        public static string PathToScript { get; } = @$"{BasePath}setupvar-script.nsh";
+
+        public static ObservableCollection<Option> DefaultOptions { get; set; } = new ObservableCollection<Option>();
         public static ObservableCollection<Option> Options { get; set; } = DefaultOptions;
 
-        public static IReadOnlyList<string> ReservedStrings { get; private set; } = new List<string>() { Labels.AUTHOR_WATERMARK, Labels.GRUBMOD_LINK_WATERMARK, Labels.SCRIPT_TEMPLATE + "\n" };
+        public static IReadOnlyList<string> ReservedStrings { get; private set; } = new List<string>() { Labels.AUTHOR_WATERMARK, Labels.GRUBMOD_WATERMARK, Labels.SCRIPT_TEMPLATE + "\n" };
         public static List<string> LoggedChanges { get; private set; } = new List<string>();
         public static List<string> OptionValueStrings { get; private set; } = new List<string>();
 

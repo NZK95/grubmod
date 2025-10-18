@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ComponentModel.DataAnnotations;
 using System.IO;
 using System.Windows;
 using System.Windows.Controls;
@@ -8,7 +9,7 @@ namespace grubmod
 {
     public partial class MainWindow : Window
     {
-        private void LoadConfig_Click(object sender, RoutedEventArgs e)
+        private async void LoadConfig_Click(object sender, RoutedEventArgs e)
         {
             try
             {
@@ -20,12 +21,11 @@ namespace grubmod
                 MessageBox.Show("Read the documentation on GitHub, and respect the syntax.", string.Empty, MessageBoxButton.OK, MessageBoxImage.Information);
 
                 var result = GetUserPath(Labels.CONFIG);
-
-                if (result.Success is false)
+                if (!result.Success)
                     return;
 
-                var pairsOptionValue = ParseConfig(result.Path);
-                ApplyConfig(pairsOptionValue);
+                var pairsOptionValue = await ParseConfigAsync(result.Path).ConfigureAwait(false);
+                await Dispatcher.InvokeAsync(() => ApplyConfig(pairsOptionValue));
 
                 MessageBox.Show("Config loaded. Analyze the logs.", $"Loaded {pairsOptionValue.Count} options", MessageBoxButton.OK, MessageBoxImage.Information);
                 Logger.Log("Config loaded successfully.", LogType.SuccessfulOperation);
@@ -38,38 +38,54 @@ namespace grubmod
             }
         }
 
-        private Dictionary<string, string> ParseConfig(string path)
+        private async Task<Dictionary<string, string>> ParseConfigAsync(string path)
         {
-            var lines = File.ReadAllLines(path).ToList();
-            var dict = new Dictionary<string, string>();
+            var lines = await File.ReadAllLinesAsync(path).ConfigureAwait(false);
+            var dict = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase);
+            const char SEPARATOR = '|';
 
-            foreach (var line in lines)
+            foreach (var raw in lines)
             {
-                char? hyphenType = line.Contains('|') ? '|' : null;
-                Logger.Log($"{line} is not added to dictionary.", LogType.Warning);
+                var line = raw.Trim();  
 
-                if (hyphenType is not null)
+                if (string.IsNullOrWhiteSpace(raw) || line.StartsWith('#') || !line.Contains('|'))
                 {
-                    var result = line.Split((char)hyphenType);
-                    var key = result[0].Trim();
-                    var value = result[1].Trim();
-
-                    if (dict.ContainsKey(key))
-                        Logger.Log($"Dictionary already contains {key}.", LogType.FailedOperation);
-                    else
-                    {
-                        dict.Add(key, value);
-                        Logger.Log($"Added {key} - {value} pair to dictionary.", LogType.SuccessfulOperation);
-                    }
+                    Logger.Log($"{raw} is not added to dictionary.", LogType.Warning);
+                    continue;
                 }
+
+                var result = line.Split(SEPARATOR);
+                var key = result[0].Trim();
+                var value = result[1].Trim();
+
+                if (string.IsNullOrEmpty(key))
+                {
+                    Logger.Log($"Skipping config line with empty key: {line}", LogType.Warning);
+                    continue;
+                }
+
+                if (!dict.ContainsKey(key))
+                {
+                    dict.Add(key, value);
+                    Logger.Log($"Added {key} - {value} pair to dictionary.", LogType.SuccessfulOperation);
+                }
+                else
+                    Logger.Log($"Dictionary already contains {key}.", LogType.FailedOperation);
             }
 
             return RemoveNonExistentOptions(dict);
         }
 
+
         private Dictionary<string, string> RemoveNonExistentOptions(Dictionary<string, string> dict)
         {
-            var result = new Dictionary<string, string>();
+            var result = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase);
+
+            if (dict is null || dict.Count == 0)
+            {
+                Logger.Log("No valid pairs found in config.", LogType.Warning);
+                return result;
+            }
 
             foreach (var pair in dict)
             {
@@ -89,12 +105,23 @@ namespace grubmod
 
         private void ApplyConfig(Dictionary<string, string> dict)
         {
+            if (dict is null || dict.Count == 0)
+            {
+                Logger.Log("No options to apply from config.", LogType.Information);
+                return;
+            }
+
             foreach (var pair in dict)
             {
-                var result = Grub.DefaultOptions.Select((opt, i) => (Option: opt, Index: i)).Where(x => x.Option.Fields.VarName.Equals(pair.Key)).ToList();
+                var matches = Grub.DefaultOptions
+                    .Select((opt, i) => (Option: opt, Index: i))
+                    .Where(x => x.Option.Fields.VarName.Equals(pair.Key)).ToList();
 
-                foreach (var res in result)
-                    Grub.DefaultOptions[res.Index] = new Option(res.Option.Fields) { VarSelectedValue = pair.Value };
+                foreach (var opt in matches)
+                {
+                    Grub.DefaultOptions[opt.Index] = new Option(opt.Option.Fields) { VarSelectedValue = pair.Value };
+                    Logger.Log($"Applied {pair.Key} = {pair.Value}", LogType.SuccessfulOperation);
+                }
             }
 
             optionsListView.ItemsSource = Grub.DefaultOptions;

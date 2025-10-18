@@ -23,29 +23,53 @@ namespace grubmod
                 return;
             }
 
-            var result = new ObservableCollection<Option>(await Task.Run(() => Grub.DefaultOptions.Where(x => (bool)parametrRadioButton.IsChecked ?
-            Grub.IsMatchCaseEnabled ? x.Fields.VarName.ToLower().Equals(optionToFind.ToLower())
-            : x.Fields.VarName.ToLower().Contains(optionToFind.ToLower()) : Grub.IsMatchCaseEnabled ?
-            x.Fields.VarDescription.ToLower().Equals(optionToFind.ToLower()) :
-            x.Fields.VarDescription.ToLower().Contains(optionToFind.ToLower()))));
+            bool searchByName = parametrRadioButton.IsChecked == true;
+            bool matchCase = Grub.IsMatchCaseEnabled;
+            var comparison = matchCase ? StringComparison.Ordinal : StringComparison.OrdinalIgnoreCase;
 
-            if (result.Count > 0)
+            Func<Option,bool> equalsPredicate = searchByName 
+                ? new Func<Option,bool>(opt => opt.Fields.VarName.Equals(optionToFind,comparison))
+                : new Func<Option,bool>(opt => opt.Fields.VarDescription.Equals(optionToFind,comparison));
+
+            Func<Option, bool> containsPredicate = searchByName
+           ? new Func<Option, bool>(opt => opt.Fields.VarName.Contains(optionToFind, comparison))
+           : new Func<Option, bool>(opt => opt.Fields.VarDescription.Contains(optionToFind, comparison));
+
+            try
             {
-                SetToAllComboBox.Items.Clear();
-                optionsListView.ItemsSource = Grub.Options = result;
+                var matches = await Task.Run(() =>
+                {
+                    var source = Grub.DefaultOptions;
+                    return source.Where(opt => matchCase ? equalsPredicate(opt) : containsPredicate(opt));
+                }).ConfigureAwait(false);
 
-                ShowAllOptions.IsChecked = true;
-                FindCommonValues();
+                await Dispatcher.InvokeAsync(() =>
+                {
+                    var result = new ObservableCollection<Option>(matches);
 
-                MessageBox.Show($"All options with \"{optionToFind}\" key printed.", $"Found {result.Count} matches.", MessageBoxButton.OK, MessageBoxImage.Information);
-                Logger.Log($"All options with \"{optionToFind}\" key printed. Found {result.Count} matches.", LogType.Information);
+                    if (result.Count > 0)
+                    {
+                        SetToAllComboBox.Items.Clear();
+                        optionsListView.ItemsSource = Grub.Options = result;
+
+                        ShowAllOptions.IsChecked = true;
+                        FindCommonValues();
+
+                        MessageBox.Show($"All options with \"{optionToFind}\" key printed.", $"Found {result.Count} matches.", MessageBoxButton.OK, MessageBoxImage.Information);
+                        Logger.Log($"All options with \"{optionToFind}\" key printed. Found {result.Count} matches.", LogType.Information);
+                    }
+                    else
+                    {
+                        MessageBox.Show($"No options with \"{optionToFind}\" key found.", "Invalid input.", MessageBoxButton.OK, MessageBoxImage.Warning);
+                        Logger.Log($"No options with \"{optionToFind}\" key found. Invalid input.", LogType.Warning);
+                    }
+                });
             }
-            else
+            catch (Exception ex)
             {
-                MessageBox.Show($"No options with \"{optionToFind}\" key found.", "Invalid input.", MessageBoxButton.OK, MessageBoxImage.Warning);
-                Logger.Log($"No options with \"{optionToFind}\" key found. Invalid input.", LogType.Warning);
+                MessageBox.Show(ex.Message);
+                Logger.Log($"{ex.Message} - {ex.Source}", LogType.Exception);
             }
-
         }
 
         private void SearchBoxGotFocus(object sender, RoutedEventArgs e)
