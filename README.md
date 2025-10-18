@@ -27,7 +27,7 @@ BIOS/UEFI по умолчанию показывает пользователю 
 5. Выберите секцию ```Text```, и напишите имя любого параметра например: ```ASPM```. <br>
    
 <p align="left">
-  <img src="https://github.com/NZK95/grubmod/blob/master/assets/images/Usage/%231.png?raw=true">
+  <img src="https://github.com/NZK95/grubmod/blob/master/docs/Usage/%231.png?raw=true">
 </p>
 
 6. После поиска, перейдите в любое вхождение. <br>
@@ -35,7 +35,7 @@ BIOS/UEFI по умолчанию показывает пользователю 
 8. В открытом окне нажмите ```Extract as is.``` <br>
 
 <p align="left">
-  <img src="https://github.com/NZK95/grubmod/blob/master/assets/images/Usage/%232.png?raw=true">
+  <img src="https://github.com/NZK95/grubmod/blob/master/docs/Usage/%232.png?raw=true">
 </p>
 
 9. Сохраните файл в робочую директорию. <br>
