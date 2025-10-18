@@ -64,10 +64,10 @@ BIOS/UEFI по умолчанию показывает пользователю 
 ---
 Комбинации клавиш:
 Enter - Search;
-```Ctrl + C``` - Clear;
-```Ctrl + G``` - Google;
-```Ctrl + E``` - Export script;
-```Ctrl + L``` - Load config;
+```Ctrl + C``` - Clear; <br>
+```Ctrl + G``` - Google; <br>
+```Ctrl + E``` - Export script; <br>
+```Ctrl + L``` - Load config; <br>
 
 ### 3. Подготовка USB-накопителя
 1. Oтформатируйте свой накопитель как `FAT32`.
