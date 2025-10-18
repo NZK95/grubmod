@@ -62,12 +62,13 @@ BIOS/UEFI по умолчанию показывает пользователю 
 - Все логические параметры. <br>
 
 ---
-Комбинации клавиш:
-Enter - Search;
+Комбинации клавиш: <br>
+Enter - Search; <br>
 ```Ctrl + C``` - Clear; <br>
 ```Ctrl + G``` - Google; <br>
 ```Ctrl + E``` - Export script; <br>
 ```Ctrl + L``` - Load config; <br>
+---
 
 ### 3. Подготовка USB-накопителя
 1. Oтформатируйте свой накопитель как `FAT32`.
