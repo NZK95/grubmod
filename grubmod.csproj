@@ -9,8 +9,4 @@
     <UseWindowsForms>False</UseWindowsForms>
   </PropertyGroup>
 
-  <ItemGroup>
-    <Folder Include="assets\images\grubmod\" />
-  </ItemGroup>
-
 </Project>
