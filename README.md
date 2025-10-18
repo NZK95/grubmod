@@ -63,7 +63,7 @@ BIOS/UEFI по умолчанию показывает пользователю 
 
 ---
 Комбинации клавиш: <br>
-Enter - Search; <br>
+```Enter``` - Search; <br>
 ```Ctrl + C``` - Clear; <br>
 ```Ctrl + G``` - Google; <br>
 ```Ctrl + E``` - Export script; <br>
@@ -97,7 +97,8 @@ Enter - Search; <br>
 ```bash
 ИМЯ ПАРАМЕТРА | ЖЕЛАЕМОЕ ЗНАЧЕНИЕ
  ```
-Тип файла конфига должен быть  ```.txt```, а в имени конфига, должно присутствовать слово ```config```. Примеры:  ```my-config.txt```, ```Configtest.txt```.
+Тип файла конфига должен быть  ```.txt```, а в имени конфига, должно присутствовать слово ```config```. <br>
+Примеры:  ```my-config.txt```, ```Configtest.txt```.
 
 ## Благодарности
  - [UEFI-Editor by BoringBoredom](https://github.com/BoringBoredom/UEFI-Editor?tab=readme-ov-file#how-to-change-hidden-settings-without-flashing-a-modded-bios) <br>
