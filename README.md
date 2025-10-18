@@ -68,8 +68,8 @@ Enter - Search; <br>
 ```Ctrl + G``` - Google; <br>
 ```Ctrl + E``` - Export script; <br>
 ```Ctrl + L``` - Load config; <br>
----
 
+---
 ### 3. Подготовка USB-накопителя
 1. Oтформатируйте свой накопитель как `FAT32`.
 2. Скачайте UEFI файл из одного из этих источников:
