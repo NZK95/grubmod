@@ -27,7 +27,7 @@ BIOS/UEFI по умолчанию показывает пользователю 
 5. Выберите секцию ```Text```, и напишите имя любого параметра например: ```ASPM```. <br>
    
 <p align="left">
-  <img src="https://github.com/NZK95/grubmod/blob/master/assets/images/Usage/%231.png?raw=true">
+  <img src="https://github.com/NZK95/grubmod/blob/master/docs/Usage/%231.png?raw=true">
 </p>
 
 6. После поиска, перейдите в любое вхождение. <br>
@@ -35,7 +35,7 @@ BIOS/UEFI по умолчанию показывает пользователю 
 8. В открытом окне нажмите ```Extract as is.``` <br>
 
 <p align="left">
-  <img src="https://github.com/NZK95/grubmod/blob/master/assets/images/Usage/%232.png?raw=true">
+  <img src="https://github.com/NZK95/grubmod/blob/master/docs/Usage/%232.png?raw=true">
 </p>
 
 9. Сохраните файл в робочую директорию. <br>
@@ -61,6 +61,15 @@ BIOS/UEFI по умолчанию показывает пользователю 
 - Все числовые параметры. <br>
 - Все логические параметры. <br>
 
+---
+Комбинации клавиш: <br>
+```Enter``` - Search; <br>
+```Ctrl + C``` - Clear; <br>
+```Ctrl + G``` - Google; <br>
+```Ctrl + E``` - Export script; <br>
+```Ctrl + L``` - Load config; <br>
+
+---
 ### 3. Подготовка USB-накопителя
 1. Oтформатируйте свой накопитель как `FAT32`.
 2. Скачайте UEFI файл из одного из этих источников:
@@ -88,7 +97,8 @@ BIOS/UEFI по умолчанию показывает пользователю 
 ```bash
 ИМЯ ПАРАМЕТРА | ЖЕЛАЕМОЕ ЗНАЧЕНИЕ
  ```
-Тип файла конфига должен быть  ```.txt```, а в имени конфига, должно присутствовать слово ```config```. Примеры:  ```my-config.txt```, ```Configtest.txt```.
+Тип файла конфига должен быть  ```.txt```, а в имени конфига, должно присутствовать слово ```config```. <br>
+Примеры:  ```my-config.txt```, ```Configtest.txt```.
 
 ## Благодарности
  - [UEFI-Editor by BoringBoredom](https://github.com/BoringBoredom/UEFI-Editor?tab=readme-ov-file#how-to-change-hidden-settings-without-flashing-a-modded-bios) <br>
