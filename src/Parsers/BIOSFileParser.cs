@@ -11,6 +11,13 @@ namespace grubmod
     {
         public static List<string> Lines { get; set; } = new List<string>();
 
+        public static string ExtractHexValue(in Option option) => option.Fields.OptionType switch
+        {
+            Labels.NORMAL_OPTION_DEFINITION => ExtractHexValueForNormalOption(option),
+            Labels.NUMERIC_OPTION_DEFINITION => ExtractHexValueForNumericOption(option),
+            _ => ExtractHexValueForCheckBoxOption(option),
+        };
+
         public async static Task<ObservableCollection<Option>> ExtractData()
         {
             Logger.Log($"ExtractData method is used", LogType.Information);
@@ -48,40 +55,13 @@ namespace grubmod
             return new ObservableCollection<Option>(options.Distinct());
         }
 
-        public static string ExtractHexValue(in Option option)
+        private static string ExtractHexValueForNormalOption(in Option option)
         {
-            if (option.Fields.OptionType.Equals(Labels.NORMAL_OPTION_DEFINITION))
-                return ExtractHexValueForNormalOption(option.Fields.VarIndex, option.VarSelectedValue);
-
-            else if (option.Fields.OptionType.Equals(Labels.NUMERIC_OPTION_DEFINITION))
-                return Helpers.ConvertDecimalToHex(option.VarSelectedValue);
-
-            else
-                return option.VarSelectedValue.Equals("True") ? "0x1" : "0x0";
-        }
-
-        private static string ExtractDefaultValue(int startIndex, string optionType)
-        {
-            var lines = BIOSParsingHelpers.ExtractListOfLinesRelatedToAnOption(startIndex);
-            var defaultNumericValue = BIOSParsingHelpers.ExtractDefaultIdValueIfExists(lines);
-
-            if (optionType.Equals(Labels.NUMERIC_OPTION_DEFINITION))
-                return defaultNumericValue;
-
-            else if (optionType.Equals(Labels.CHECKBOX_OPTION_DEFINITION))
-                return ExtractDefaultValueForCheckBoxes(lines);
-
-            else
-                return ExtractDefaultValueForNormalOption(lines, defaultNumericValue);
-        }
-
-        private static string ExtractHexValueForNormalOption(int index, string value)
-        {
-            var lines = BIOSParsingHelpers.ExtractListOfLinesRelatedToAnOption(index);
+            var lines = BIOSParsingHelpers.ExtractListOfLinesRelatedToAnOption(option.Fields.VarIndex);
 
             foreach (var line in lines)
             {
-                if (line.Contains(Labels.VALUE_DEFINITION) && line.Contains(value))
+                if (line.Contains(Labels.VALUE_DEFINITION) && line.Contains(option.VarSelectedValue))
                 {
                     var decimalValue = Regex.Match(line, @"Value:\s*(\d+)").Groups[1].Value;
                     return Helpers.ConvertDecimalToHex(decimalValue);
@@ -91,12 +71,26 @@ namespace grubmod
             return string.Empty;
         }
 
-        private static string ExtractDefaultValueForCheckBoxes(List<string> lines) =>
-          string.Join("", (from line in lines
-                           where line.Contains(Labels.DEFAULT)
-                           let startIndex = line.IndexOf(Labels.DEFAULT) + Labels.DEFAULT.Length + 1
-                           let endIndex = line.IndexOf(',', startIndex)
-                           select line[startIndex..endIndex].Trim()));
+        private static string ExtractHexValueForNumericOption(in Option option) =>
+                Helpers.ConvertDecimalToHex(option.VarSelectedValue);
+
+        private static string ExtractHexValueForCheckBoxOption(in Option option) =>
+             option.VarSelectedValue.Equals("True") ? "0x1" : "0x0";
+
+        private static string ExtractDefaultValue(int startIndex, string optionType)
+        {
+            var lines = BIOSParsingHelpers.ExtractListOfLinesRelatedToAnOption(startIndex);
+            var defaultNumericValue = BIOSParsingHelpers.ExtractDefaultIdValueIfExists(lines);
+
+            switch (optionType)
+            {
+                case Labels.NORMAL_OPTION_DEFINITION: return ExtractDefaultValueForNormalOption(lines, defaultNumericValue);
+                case Labels.NUMERIC_OPTION_DEFINITION: return defaultNumericValue;
+                case Labels.CHECKBOX_OPTION_DEFINITION: return ExtractDefaultValueForCheckBoxes(lines);
+            }
+
+            return Labels.NOT_FOUND;
+        }
 
         private static string ExtractDefaultValueForNormalOption(List<string> lines, string defaultNumericValue)
         {
@@ -118,6 +112,13 @@ namespace grubmod
             return Labels.NOT_FOUND;
         }
 
+        private static string ExtractDefaultValueForCheckBoxes(List<string> lines) =>
+          string.Join("", (from line in lines
+                           where line.Contains(Labels.DEFAULT)
+                           let startIndex = line.IndexOf(Labels.DEFAULT) + Labels.DEFAULT.Length + 1
+                           let endIndex = line.IndexOf(',', startIndex)
+                           select line[startIndex..endIndex].Trim()));
+       
         public static string ExtractValueByLabel(int lineIndex, string label)
         {
             var lines = BIOSParsingHelpers.ExtractStringOfLinesRelatedToAnOption(lineIndex);

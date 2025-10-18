@@ -203,7 +203,7 @@
 
                     <StackPanel Grid.Row="0" Grid.Column="0" Orientation="Horizontal" VerticalAlignment="Top" HorizontalAlignment="Left">
                         <Button Margin="10" Height="40" MinWidth="150" Content="Load config" BorderBrush="#222222" Foreground ="White" Background="#000000" Click="LoadConfig_Click"/>
-                        <Button Height="40" MinWidth="150" Content="Export script" BorderBrush="#222222" Foreground ="White" Background="#000000" Click="ExportFile_Click"/>
+                        <Button Height="40" MinWidth="150" Content="Export script" BorderBrush="#222222" Foreground ="White" Background="#000000" Click="ExportScript_Click"/>
                     </StackPanel>
 
                     <StackPanel  Grid.Row="1" Grid.Column="0" Orientation="Horizontal" VerticalAlignment="Bottom" HorizontalAlignment="Right"  >

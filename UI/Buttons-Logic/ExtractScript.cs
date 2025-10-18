@@ -5,7 +5,7 @@ namespace grubmod
 {
     public partial class MainWindow : Window
     {
-        private void ExportFile_Click(object sender, RoutedEventArgs e)
+        private void ExportScript_Click(object sender, RoutedEventArgs e)
         {
             try
             {
