@@ -136,6 +136,6 @@ Examples: `my-config.txt`, `Configtest.txt`.
 ---
 
 ## Troubleshooting & Support
-If you encounter errors or bugs, please report them via the issue tracker.
+If you encounter errors or bugs, please report them via the issue tracker. <br>
 Sometimes, after changing BIOS parameters, the system might not boot.
 To reset BIOS to defaults, clear the CMOS or remove the battery.
