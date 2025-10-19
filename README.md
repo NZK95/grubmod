@@ -1,7 +1,7 @@
 # grubmod
 [![Downloads](https://img.shields.io/github/downloads/NZK95/grubmod/total.svg)](https://github.com/NZK95/grubmod/releases)
 
-By default, BIOS/UEFI only shows users a small portion of its variables (settings). Most of them are hidden, and the standard interface doesn’t display them. These hidden options control everything — from memory timings to CPU power parameters.  
+By default, BIOS/UEFI only shows users a small part of its variables (settings). Most of them are hidden, and the standard interface doesn’t display them. These hidden options control everything — from memory timings to CPU power parameters.  
 **BIOS/UEFI variables** are key–value pairs stored in non-volatile memory (NVRAM). Manufacturers usually lock access to these variables.
 
 **grubmod** is a tool that allows you to view and modify hidden BIOS variables directly through the GRUB bootloader using a convenient graphical interface.  
@@ -116,12 +116,6 @@ Ctrl + L  - Load config
 
 ---
 
-### 5. Troubleshooting
-Sometimes, after changing BIOS parameters, the system might not boot.
-To reset BIOS to defaults, clear the CMOS or remove the battery.
-
----
-
 ### Config Syntax
 If you want to create/load a custom config, follow this syntax:  
 If a parameter is missing or incorrect, it will be ignored.
@@ -143,3 +137,5 @@ Examples: `my-config.txt`, `Configtest.txt`.
 
 ## Troubleshooting & Support
 If you encounter errors or bugs, please report them via the issue tracker.
+Sometimes, after changing BIOS parameters, the system might not boot.
+To reset BIOS to defaults, clear the CMOS or remove the battery.
