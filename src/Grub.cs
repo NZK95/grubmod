@@ -7,7 +7,7 @@ namespace grubmod
     {
         public static string BasePath { get; } = AppContext.BaseDirectory;
         public static string PathToMainFile { get; set; } = string.Empty;
-        public static string PathToLogs { get; } = @$"{BasePath}logs-file({DateTime.Now:yyyy-MM-dd_HH-mm-ss}).txt";
+        public static string PathToLogs { get; } = @$"{BasePath}logs\logs-file({DateTime.Now:yyyy-MM-dd_HH-mm-ss}).txt";
         public static string PathToConfig { get; } = @$"{BasePath}builded-config.txt";
         public static string PathToScript { get; } = @$"{BasePath}setupvar-script.nsh";
 

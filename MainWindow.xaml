@@ -2,7 +2,12 @@
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:local="clr-namespace:grubmod"
-        Title="grubmod" Height="1080" Width="1920" Background="#000000" Foreground="White" FontSize="14.5" FontFamily="JetBrains Mono" KeyDown="Window_KeyDown">
+        Title="grubmod"
+        Height="1080" Width="1920"
+        Background="#000000" Foreground="White"
+        FontSize="14.5"
+        FontFamily="JetBrains Mono"
+        KeyDown="Window_KeyDown">
 
     <Window.Resources>
         <DataTemplate x:Key="ComboTemplate">
