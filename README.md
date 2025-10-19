@@ -32,7 +32,7 @@ It automatically generates a valid script with the desired changes and applies i
 ### 1. Preparing working files
 1. Download the latest release of `grubmod`.
 2. Download the **current** version of your BIOS firmware and place it in your working folder.
-3. Open the firmware file in `UEFIToolNE`.
+3. Open the firmware file in `UEFIToolNE` in the `files` folder.
 4. In the window that opens, press `Ctrl + F`.
 5. Select the `Text` section and type any parameter name, for example: `ASPM`.
 
@@ -48,8 +48,12 @@ It automatically generates a valid script with the desired changes and applies i
   <img src="https://github.com/NZK95/grubmod/blob/master/docs/Usage/%232.png?raw=true">
 </p>
 
-9. Save the file in your working directory.
-10. Open the saved file in grubmod using the **Import file** button.
+9. Save the file in `files` folder.
+10. Open CLI in the `files` folder, and insert the command:
+```
+ifrextractor.exe "extracted_file_name.sct"
+```
+11. Open the saved file in grubmod using the **Import file** button.
 
 
 ### 2. Using grubmod
