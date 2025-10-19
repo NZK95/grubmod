@@ -19,7 +19,7 @@ It automatically generates a valid script with the desired changes and applies i
 
 ---
 
-## Main Features
+## Features
 - **Displays all BIOS/UEFI variables, including hidden ones, along with their data.**
 - **Convenient filters for viewing and analyzing parameters.**
 - **Modify variables and apply changes through GRUB.**
@@ -30,7 +30,7 @@ It automatically generates a valid script with the desired changes and applies i
 
 ---
 
-## Instructions
+## Usage
 
 ### 1. Preparing working files
 1. Download the latest release of `grubmod`.
@@ -103,7 +103,7 @@ Ctrl + L  - Load config
 
 ---
 
-### 4. Applying the script in GRUB
+### 4. Script execution
 1. Boot from the USB drive via your motherboard’s boot menu (check your model’s key combo online).
 2. In the UEFI shell, identify your USB drive:
    - Check the displayed **Mapping Table** (to re-display it, type `map`). Most likely, it’ll be `FS0`.
