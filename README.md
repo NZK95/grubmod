@@ -1,115 +1,145 @@
 # grubmod
 [![Downloads](https://img.shields.io/github/downloads/NZK95/grubmod/total.svg)](https://github.com/NZK95/grubmod/releases)
 
-BIOS/UEFI по умолчанию показывает пользователю лишь малую часть своих переменных (параметров). Большинство из них спрятаны и обычные пользовательский интерфейс их не видит. Эти скрытые опции отвечают за всё: от таймингов памяти до параметров питания процессора. <br><br>
-**Переменные BIOS/UEFI** — это хранящиеся в энергонезависимой памяти (NVRAM) пары “ключ–значение”. Производители обычно блокируют доступ к этим переменным. <br>
+By default, BIOS/UEFI only shows users a small portion of its variables (settings). Most of them are hidden, and the standard interface doesn’t display them. These hidden options control everything — from memory timings to CPU power parameters.  
+**BIOS/UEFI variables** are key–value pairs stored in non-volatile memory (NVRAM). Manufacturers usually lock access to these variables.
 
-**grubmod** — инструмент которые позволяет просматривать и изменять скрытые переменные BIOS прямо через загрузчик GRUB, используя удобный графический интерфейс. Программа генерирует корректный скрипт с нужными изменениями и применяет его следуя инструкциям.
+**grubmod** is a tool that allows you to view and modify hidden BIOS variables directly through the GRUB bootloader using a convenient graphical interface.  
+It automatically generates a valid script with the desired changes and applies it following the given instructions.
 
-> ## Дисклеймер  
-> Автор не несёт ответственности за любой возможный ущерб, причинённый оборудованию в результате использования данного проекта.  
-> Вы используете программу на свой страх и риск.
+> ## Disclaimer
+> The author is not responsible for any possible damage caused to hardware as a result of using this project.  
+> You use this program at your own risk.
 
-## Известные проблемы
-- Не импортирует все настройки на AMD системах.
-- Некоторые параметры имеют не все значения.
-  
-## Основные возможности
-- **Отображение всех переменных BIOS/UEFI, включая скрытые и все их данные.** <br>
-- **Удобные фильтры для отображения и анализа параметров.** <br>
-- **Изменение переменных с последующим применением через GRUB.**  <br>
-- **Возможность импорта и экспорта конфигов.** <br>
-- **Наличие встроенных конфигов с различными пресетами.** <br>
-- **Генерация и исполнение скриптов для автоматизации изменений.**  <br>
-- **Возможность отслеживания ошибок через логирование.** <br>
-## Инструкции
-### 1. Подготовка робочих файлов
-1. Скачайте последний релиз ```grubmod.```  <br>
-2. Скачайте ТЕКУЩУЮ версию прошивки вашего биоса и поместите его в робочую папку. <br>
-3. Передвиньте файл с прошивкой в ```UEFIToolNE```.  <br>
-4. В открытом окне нажмите комбинацию клавиш ```Ctrl + F```. <br>
-5. Выберите секцию ```Text```, и напишите имя любого параметра например: ```ASPM```. <br>
-   
+---
+
+## Known Issues
+- As far as known, it doesn’t work on AMD systems.
+- Some parameters don’t have all possible values.
+
+---
+
+## Main Features
+- **Displays all BIOS/UEFI variables, including hidden ones, along with their data.**
+- **Convenient filters for viewing and analyzing parameters.**
+- **Modify variables and apply changes through GRUB.**
+- **Import and export configs.**
+- **Built-in presets with various configurations.**
+- **Script generation and execution for automating changes.**
+- **Error tracking via logging.**
+
+---
+
+## Instructions
+
+### 1. Preparing working files
+1. Download the latest release of `grubmod`.
+2. Download the **current** version of your BIOS firmware and place it in your working folder.
+3. Open the firmware file in `UEFIToolNE`.
+4. In the window that opens, press `Ctrl + F`.
+5. Select the `Text` section and type any parameter name, for example: `ASPM`.
+
 <p align="left">
   <img src="https://github.com/NZK95/grubmod/blob/master/docs/Usage/%231.png?raw=true">
 </p>
 
-6. После поиска, перейдите в вхождение ```Setup/PE32 image section```. <br>
-7. Выберите файл ```PE32 image section```  в разделе ```Setup```, и нажмите на него ПКМ. <br>
-8. В открытом окне нажмите ```Extract as is.``` <br>
+6. After the search, go to the `Setup/PE32 image section` entry.
+7. Right-click the `PE32 image section` in the `Setup` section.
+8. Select **Extract as is.**
 
 <p align="left">
   <img src="https://github.com/NZK95/grubmod/blob/master/docs/Usage/%232.png?raw=true">
 </p>
 
-9. Сохраните файл в робочую директорию. <br>
-10. Откройте сохраненный файл в grubmod, через кнопку **Import file**.
-
-### 2. Использование grubmod
-- **Match case** - выполняет поиск только с точным совпадением. <br>
-- **Parametr/Description** - позволяет выполнить поиск по имени или описанию параметра. <br>
-- **Set all to** - доступна в том случае, если у текущей коллекции параметров есть общие значения, что бы их применить нажмите кнопку **Apply**.
----
-
-- **Import file** - позволяет загрузить главный файл биоса. Например: ```Section_PE32_image_Setup_Setup.sct.0.0.en-US.uefi.ifr.txt```.
-- **Export script** - позволяет экспортировать скрипт с настроенными параметрами.
-- **Build config** - позволяет создать конфиг на базе выбранных параметров.
-- **Load config** - позволяет загрузить и применить текстовый конфиг с параметрами.
-- **Google** - позволяет выполнить поиск параметра в Google.
-- **Search** - позволяет выполнить поиск по коллекции.
-- **Clear** - позволяет сбросить коллекцию параметров по умолчанию.
----
-В правом нижнем углу, есть 4 опции, которые определяют какой тип настроек будет показан.
-- Все параметры. <br>
-- Все параметры с выборычными значениями. <br>
-- Все числовые параметры. <br>
-- Все логические параметры. <br>
+9. Save the file in your working directory.
+10. Open the saved file in grubmod using the **Import file** button.
 
 ---
-Комбинации клавиш: <br>
-```Enter``` - Search; <br>
-```Ctrl + C``` - Clear; <br>
-```Ctrl + G``` - Google; <br>
-```Ctrl + E``` - Export script; <br>
-```Ctrl + L``` - Load config; <br>
+
+### 2. Using grubmod
+- **Match case** – search with case sensitivity.
+- **Parameter/Description** – search by parameter name or description.
+- **Set all to** – if multiple parameters share the same values, you can apply them all at once by pressing **Apply**.
 
 ---
-### 3. Подготовка USB-накопителя
-1. Oтформатируйте свой накопитель как `FAT32`.
-2. Скачайте UEFI файл из одного из этих источников:
-- [UEFI-Shell](https://github.com/pbatard/UEFI-Shell/releases/latest) (`shellx64.efi`)
-- Official [EDK2 stable releases](https://github.com/tianocore/edk2/releases/download/edk2-stable202002/ShellBinPkg.zip) (`ShellBinPkg > UefiShell > X64 > Shell.efi`); Этот источник может быть устаревшим, не рекомандую его к использованию.
-4. Переименуйте скачанный UEFI файл на `BOOTX64.EFI` и поместите его по следующему пути: `USB:\EFI\BOOT`.
-5. Поместите `setup_var.efi` и `setupvar-script.nsh` в корень USB-накопителя.
 
-### 4. Применение скрипта в GRUB
-1. Загрузитесь с флешки в BOOT меню (Посмотрите комбинацию клавиш для вашей материнской платы в интернете).
-2. Выберите ваш USB-накопитель, введя его идентификатор в системе:
-- Просмотрите таблицу отображения (Mapping Table), которая отображается по умолчанию. Чтобы показать её снова - введите map в консоль. Скорее всего, это будет FS0.
-3. Запустите скрипт с помощью следующей команды:
+- **Import file** – load the main BIOS file, e.g. `Section_PE32_image_Setup_Setup.sct.0.0.en-US.uefi.ifr.txt`.
+- **Export script** – export a script with your modified parameters.
+- **Build config** – create a config from selected parameters.
+- **Load config** – load and apply a text config with parameters.
+- **Google** – search the parameter online.
+- **Search** – perform a parameter search.
+- **Clear** – reset the parameter collection to default.
+
+---
+
+In the lower-right corner, there are 4 options determining which type of parameters are displayed:
+- All parameters.
+- Parameters with selectable values.
+- Numeric parameters.
+- Logical parameters.
+
+---
+
+### Keyboard shortcuts
+```
+Enter     - Search
+Ctrl + C  - Clear
+Ctrl + G  - Google
+Ctrl + E  - Export script
+Ctrl + L  - Load config
+```
+
+---
+
+### 3. Preparing the USB drive
+1. Format your USB drive as `FAT32`.
+2. Download a UEFI shell file from one of these sources:
+   - [UEFI-Shell](https://github.com/pbatard/UEFI-Shell/releases/latest) (`shellx64.efi`)
+   - Official [EDK2 stable releases](https://github.com/tianocore/edk2/releases/download/edk2-stable202002/ShellBinPkg.zip) (`ShellBinPkg > UefiShell > X64 > Shell.efi`) — may be outdated, not recommended.
+3. Rename the downloaded UEFI file to `BOOTX64.EFI` and place it at:
+   `USB:\EFI\BOOT`
+4. Place `setup_var.efi` and `setupvar-script.nsh` in the root of the USB drive.
+
+---
+
+### 4. Applying the script in GRUB
+1. Boot from the USB drive via your motherboard’s boot menu (check your model’s key combo online).
+2. In the UEFI shell, identify your USB drive:
+   - Check the displayed **Mapping Table** (to re-display it, type `map`). Most likely, it’ll be `FS0`.
+3. Run the script with:
+   ```bash
+   .\setupvar-script.nsh
+   ```
+4. Wait until the script finishes execution.
+5. Power off your PC using the physical power button to apply the changes.
+
+---
+
+### 5. Troubleshooting
+Sometimes, after changing BIOS parameters, the system might not boot.
+To reset BIOS to defaults, clear the CMOS or remove the battery.
+
+---
+
+### Config Syntax
+If you want to create/load a custom config, follow this syntax:  
+If a parameter is missing or incorrect, it will be ignored.
 ```bash
-.\setupvar-script.nsh
- ```
-4. Подождите пока скрипт завершит свое выполнение.
-5. Выключите компьютер через кнопку на корпусе, для применения изменений.
+PARAMETER NAME | DESIRED VALUE
+```
+The config file must have a `.txt` extension, and the filename must contain the word `config`.  
+Examples: `my-config.txt`, `Configtest.txt`.
 
-### 5. Возможные проблемы
-Часто случается, что при изменении параметров в биосе, компьютер может не запускаться.
-Что бы сбросить BIOS к настройкам по умолчанию, очистите CMOS или извлеките батарейку.
+---
 
-### Синтаксис конфига
-Если вы желаете создать/загрузить кастомный конфиг, вы должны соблюдать синтаксис. При несоблюдении или несуществовании параметра, он будет игнорироваться. 
-```bash
-ИМЯ ПАРАМЕТРА | ЖЕЛАЕМОЕ ЗНАЧЕНИЕ
- ```
-Тип файла конфига должен быть  ```.txt```, а в имени конфига, должно присутствовать слово ```config```. <br>
-Примеры:  ```my-config.txt```, ```Configtest.txt```.
+## Credits
+- [UEFI-Editor by BoringBoredom](https://github.com/BoringBoredom/UEFI-Editor?tab=readme-ov-file#how-to-change-hidden-settings-without-flashing-a-modded-bios)
+- [grub-mod-setup_var by datasone](https://github.com/datasone/grub-mod-setup_var)
+- [setup_var.efi](https://github.com/datasone/setup_var.efi?tab=readme-ov-file)
+- [UEFI](https://github.com/LongSoft/UEFITool#known-issues)
 
-## Благодарности
- - [UEFI-Editor by BoringBoredom](https://github.com/BoringBoredom/UEFI-Editor?tab=readme-ov-file#how-to-change-hidden-settings-without-flashing-a-modded-bios) <br>
- - [grub-mod-setup_var by datasone](https://github.com/datasone/grub-mod-setup_var) <br>
- - [setup_var.efi](https://github.com/datasone/setup_var.efi?tab=readme-ov-file) <br>
- - [UEFI](https://github.com/LongSoft/UEFITool#known-issues) <br>
- 
-## Устранение неполадок
-Если вы столкнулись с ошибками - сообщите о проблеме через систему отслеживания ошибок.
+---
+
+## Troubleshooting & Support
+If you encounter errors or bugs, please report them via the issue tracker.
