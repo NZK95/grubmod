@@ -1,5 +1,5 @@
 # grubmod
-[![Downloads](https://img.shields.io/github/downloads/NZK95/grubmod/total.svg)](https://github.com/NZK95/grubmod/releases/tag/1.0.0)
+[![Downloads](https://img.shields.io/github/downloads/NZK95/grubmod/total.svg)](https://github.com/NZK95/grubmod/releases)
 
 By default, BIOS/UEFI only shows users a small part of its variables (settings). Most of them are hidden, and the standard interface doesn’t display them. These hidden options control everything — from memory timings to CPU power parameters.  
 **BIOS/UEFI variables** are key–value pairs stored in non-volatile memory (NVRAM). Manufacturers usually lock access to these variables.
