@@ -56,7 +56,8 @@ It automatically generates a valid script with the desired changes and applies i
 - **Match case** – search with case sensitivity.
 - **Parameter/Description** – search by parameter name or description.
 - **Set all to** – if multiple parameters share the same values, you can apply them all at once by pressing **Apply**.
-
+  
+---
 
 - **Import file** – load the main BIOS file, e.g. `Section_PE32_image_Setup_Setup.sct.0.0.en-US.uefi.ifr.txt`.
 - **Export script** – export a script with your modified parameters.
@@ -66,6 +67,7 @@ It automatically generates a valid script with the desired changes and applies i
 - **Search** – perform a parameter search.
 - **Clear** – reset the parameter collection to default.
 
+---
 
 In the lower-right corner, there are 4 options determining which type of parameters are displayed:
 - All parameters.
@@ -73,6 +75,7 @@ In the lower-right corner, there are 4 options determining which type of paramet
 - Numeric parameters.
 - Logical parameters.
 
+---
 
 ### Keyboard shortcuts
 ```
@@ -83,6 +86,7 @@ Ctrl + E  - Export script
 Ctrl + L  - Load config
 ```
 
+---
 
 ### 3. Preparing the USB drive
 1. Format your USB drive as `FAT32`.
