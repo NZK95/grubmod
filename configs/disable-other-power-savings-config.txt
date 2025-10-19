@@ -1,0 +1,89 @@
+Power Down Mode | No Power Down
+Power Down Unused Lanes | Disabled
+
+Power Gating | Disabled
+JTAG C10 Power Gate | Disabled
+
+ASPM | Disabled
+DMI Link ASPM Control | Disabled
+DMI Gen3 ASPM | Disabled
+DMI Gen3 ASPM Control | Disabled
+DMI ASPM | Disabled
+ASPM Support | Disabled
+Native ASPM | Disabled
+
+Enable 8254 Clock Gate | Disabled
+Enable DCI ModPHY Power Gate | Disabled
+PCI Express Power Gating | Disabled
+PCI Express Clock Gating | Disabled
+USB2 PHY System Well Power Gating | Disabled
+USB2 PHY Sus Well Power Gating | Disabled
+
+L1 Substates | Disabled
+DPTF | Disabled
+OBFF | Disabled
+LTR | Disabled
+Power Loading | Disabled
+PECI | Disabled
+PUIS (Power-Up In Standby) Enable | Disabled
+PUIS Enable | Disabled
+PTID | Disabled
+Ptid support | Disabled
+Enable Hibernation | Disabled
+LPMode | Disabled
+
+PCH Energy Reporting | Disabled
+PCH Cross Throttling | Disabled
+
+FIVR Spread Spectrum | Disabled
+PCIe Spread Spectrum Clocking | Disabled
+RFI Spread Spectrum | 0.5%
+
+ACPI Sleep State | Suspend Disabled
+EC Low Power Mode | Disabled
+Low Power S0 Idle Capability | Disabled
+ACPI D3Cold Support | Disabled
+PCI Delay Optimization | Enabled
+Intel Ready Mode Technology | Disabled
+Disable DSX ACPRESENT PullDown | Enabled
+Disable Gen2 PLL Shutdown and L1 Controller Power Gating | Enabled
+Disable PCIE Tunneling Over USB4 | Enabled
+PCIE Tunneling over USB4 | Disabled
+RC6(Render Standby) | Disabled
+HDC Control | Disabled
+ErP | Disabled
+
+Wake On WiGig | Disabled
+Wake on LAN Enable | Disabled
+LAN Wake From DeepSx | Disabled
+Wake on WLAN and BT Enable | Disabled
+USB S5 Wakeup Support | Disabled
+DeepSx Wake on WLAN and BT Enable | Disabled
+Wake on LAN Enable | Disabled
+
+Boot performance mode | Turbo
+USB 2.0 Controller Mode | HiSpeed
+
+PCIe Speed | Max
+Max Link Speed | Max
+DMI Max Link Speed | Max
+Maximum Payload | Max
+Maximum Read Request | Max
+PEG0 Max Payload size | Max
+PEG1 Max Payload size | Max
+PEG2 Max Payload size | Max
+PEG3 Max Payload size | Max
+
+#RAM
+PowerDown Energy Ch1Dimm1 | 0
+PowerDown Energy Ch1Dimm0 | 0
+PowerDown Energy Ch0Dimm1 | 0
+PowerDown Energy Ch0Dimm0 | 0
+Power Down Energy Channel 1 DIMM 1 | 0
+Power Down Energy Channel 1 DIMM 0 | 0
+Command Rate Support | Disabled
+EPG DIMM Idd3N | 0
+EPG DIMM Idd3P | 0
+DDR PowerDown and Idle Counter | PCODE
+For LPDDR Only DDR PowerDown and Idle Counter | PCODE
+C6DRAM | Disabled

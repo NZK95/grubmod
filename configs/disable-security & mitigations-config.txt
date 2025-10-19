@@ -1,0 +1,29 @@
+Intel Platform Trust Technology (PTT) | Disabled
+Software Guard Extensions (SGX) | Disabled
+SW Guard Extension (security) | Disabled
+Intel Trusted Execution Technology | Disabled
+Total Memory Encryption | Disabled
+Security Device Support | Disabled
+BME DMA Mitigation | Disabled
+PAVP Enable | Disabled
+Enable RH Prevention | Disabled
+Execute Disable Bit | Disabled
+TPM State | Disabled
+TCM State | Disabled
+AES | Disabled
+ASF Support | Disabled
+USB3 Type-C UFP2DFP Kernel/Platform Debug Support | Disabled
+TCC Activation Offset | 0
+Me State | Disabled
+Bootup NumLock State | Off
+Three Strike Counter | Disabled
+Control Iommu Pre-boot Behavior | Disabled
+Cpu CrashLog | Disabled
+CrashLog Feature - Disable
+PMC Debug Message Enable - Disable
+Remote Platform Erase Feature | Disabled
+Mrc Fast Boot | Disabled
+Fast Boot | Disabled
+Debug Interface | Disabled
+Advanced Error Reporting | Disabled
+

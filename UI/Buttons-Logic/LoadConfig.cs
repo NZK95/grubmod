@@ -90,10 +90,15 @@ namespace grubmod
             foreach (var pair in dict)
             {
                 var option = Grub.DefaultOptions.FirstOrDefault(opt => opt.Fields.VarName.Equals(pair.Key));
+                
+                if(option is null) 
+                    continue;
 
-                if (option is not null && option.Fields.VarValues.Contains(pair.Value))
+                var value = pair.Value.Equals("Max") ? option.Fields.VarValues.Last() : pair.Value;
+
+                if (option.Fields.VarValues.Contains(value))
                 {
-                    result[pair.Key] = pair.Value;
+                    result[pair.Key] = value;
                     Logger.Log($"Option from config is found - {pair.Key}", LogType.SuccessfulOperation);
                 }
                 else

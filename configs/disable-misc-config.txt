@@ -1,0 +1,21 @@
+3DMark01 Enhancement | Disabled
+RGB Fusion | Disabled
+Legacy Game Compatibility Mode | Disabled
+BIST | Disable
+PCH Trace Hub Enable Mode - Disable
+Processor trace - Disable
+SMM Processor Trace - Disable
+URR | Disabled
+FER | Disabled
+NFER | Disabled
+CER | Disabled
+PME SCI | Disabled
+PERR# Generation | Disabled
+SERR# Generation | Disabled
+HDCP Support | Disabled
+IOAPIC 24-119 Entries | Disabled
+HW Notification | Disabled
+ALS Support | Disabled
+Intel Rapid Recovery Technology | Disabled
+Smart Response Technology | Disabled
+SMART Self Test | Disabled

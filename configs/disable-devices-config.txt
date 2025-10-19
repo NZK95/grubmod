@@ -1,0 +1,34 @@
+Ipv4 PXE Support | Disabled
+Ipv6 PXE Support | Disabled
+Network Stack | Disabled
+Network Stack Driver Support | Disabled
+PS2 Keyboard and Mouse | Disabled
+PS2 Devices Support | Disabled
+WWAN participant (WIFI) | Disabled
+WWAN (WIFI) | Disabled
+Wi-Fi Controller | Disabled
+Wi-Fi Core | Disabled
+Bluetooth Controller | Disabled
+Bluetooth | Disabled
+BT Core | Disabled
+Bluetooth SAR | Disabled
+Onboard CNVi Module Control (wifi & bt) | Disabled
+Touch Pad | Disabled
+Touch Panel | Disabled
+Finger Print Sensor | Disabled
+WoV (Wake on Voice) | Disabled
+Type C Support | Disabled
+USB Provisioning of AMT | Disabled
+XHCI Hand-off | Disabled
+Discrete Thunderbolt(TM) Support | Disabled
+IGD VTD | Disabled
+IPU VTD | Disabled
+IOP VTD | Disabled
+USB DbC Enable Mode | Disabled
+Serial Port - Disable
+Parallel Port - Disable
+Hot Plug | Disabled
+Hot-Plug Support | Disabled
+Port 60/64 Emulation | Disabled
+Port 61h Bit-4 Emulation | Disabled
+Internal Graphics | Disabled

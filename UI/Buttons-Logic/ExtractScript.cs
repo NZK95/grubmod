@@ -42,12 +42,14 @@ namespace grubmod
         {
             var lines = File.ReadAllLines(path).ToList();
 
-            if (!lines.Contains(Labels.END_OF_SCRIPT))
-                lines.Add("\n" + Labels.END_OF_SCRIPT);
-            else if (!lines[^1].Equals(Labels.END_OF_SCRIPT))
+            if (!lines.Contains(Grub.EndOfScript))
             {
-                lines.Remove(Labels.END_OF_SCRIPT);
-                lines.Add("\n" + Labels.END_OF_SCRIPT);
+                lines.Add("\n" + Grub.EndOfScript);
+            }
+            else if (!lines[^1].Equals(Grub.EndOfScript))
+            {
+                lines.Remove(Grub.EndOfScript);
+                lines.Add("\n" + Grub.EndOfScript);
             }
 
             File.WriteAllLines(path, lines);

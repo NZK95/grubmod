@@ -11,6 +11,7 @@ namespace grubmod
         public static string PathToConfig { get; } = @$"{BasePath}builded-config.txt";
         public static string PathToScript { get; } = @$"{BasePath}setupvar-script.nsh";
 
+        public static string EndOfScript => GetEndOfScript();
         public static ObservableCollection<Option> DefaultOptions { get; set; } = new ObservableCollection<Option>();
         public static ObservableCollection<Option> Options { get; set; } = DefaultOptions;
 
@@ -29,6 +30,12 @@ namespace grubmod
             LoggedChanges.Add(script);
             OptionValueStrings.Add($"{varName} | {textValue}");
             Logger.Log("Changes are logged.", LogType.SuccessfulOperation);
+        }
+
+        private static string GetEndOfScript()
+        {
+            var firstOption = DefaultOptions.FirstOrDefault();
+            return $"setup_var.efi {firstOption?.Fields?.VarOffset} -n {firstOption?.Fields?.VarSectionName} -r";
         }
     }
 }

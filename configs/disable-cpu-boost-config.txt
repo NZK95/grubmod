@@ -1,0 +1,37 @@
+Package C State limit | C0/C1
+C-States Control | Disabled
+Enhanced C-states | Disabled
+CState Pre-Wake | Disabled
+C-State Auto Demotion | Disabled
+C-State Un-demotion | Disabled
+CPU Enhanced Halt(C1E) | Disabled
+C3 State Support | Disabled
+C6 State Support | Disabled
+C7 State Support | Disabled
+C8 State Support | Disabled
+C10 State Support | Disabled
+CPU Thermal Monitor | Disabled
+Ring to Core offset | Disabled
+Ring Down Bin | Disabled
+RSR | Disabled
+Race To Halt (RTH) | Disabled
+CPU EIST Function | Disabled
+EIST | Disabled
+Intel(R) Speed Shift Technology Interrupt Control | Disabled
+SpeedStep | Disabled
+Voltage Optimization | Disabled
+TVB Voltage Optimizations | Disabled
+TVB Ratio Clipping | Disabled
+BCLK Aware Adaptive Voltage | Disabled
+Dual Tau Boost | Disabled
+Bi-Directional PROCHOT | Disabled
+MonitorMWait | Disabled
+Vmax Stress | Disabled
+Intel RMT State | Disabled
+Energy Efficient P-state | Disabled
+Energy Efficient Turbo | Disabled
+Energy Performance Gain | Disabled
+Intel(R) Turbo Boost Technology | Disabled
+Intel Adaptive Thermal Monitor | Disabled
+PECI | Disabled
+HDC Control | Disabled
