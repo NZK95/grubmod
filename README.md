@@ -11,13 +11,11 @@ It automatically generates a valid script with the desired changes and applies i
 > The author is not responsible for any possible damage caused to hardware as a result of using this project.  
 > You use this program at your own risk.
 
----
 
 ## Known Issues
 - As far as known, it doesn’t work on AMD systems.
 - Some parameters don’t have all possible values.
 
----
 
 ## Features
 - **Displays all BIOS/UEFI variables, including hidden ones, along with their data.**
@@ -28,7 +26,6 @@ It automatically generates a valid script with the desired changes and applies i
 - **Script generation and execution for automating changes.**
 - **Error tracking via logging.**
 
----
 
 ## Usage
 
@@ -54,14 +51,12 @@ It automatically generates a valid script with the desired changes and applies i
 9. Save the file in your working directory.
 10. Open the saved file in grubmod using the **Import file** button.
 
----
 
 ### 2. Using grubmod
 - **Match case** – search with case sensitivity.
 - **Parameter/Description** – search by parameter name or description.
 - **Set all to** – if multiple parameters share the same values, you can apply them all at once by pressing **Apply**.
 
----
 
 - **Import file** – load the main BIOS file, e.g. `Section_PE32_image_Setup_Setup.sct.0.0.en-US.uefi.ifr.txt`.
 - **Export script** – export a script with your modified parameters.
@@ -71,7 +66,6 @@ It automatically generates a valid script with the desired changes and applies i
 - **Search** – perform a parameter search.
 - **Clear** – reset the parameter collection to default.
 
----
 
 In the lower-right corner, there are 4 options determining which type of parameters are displayed:
 - All parameters.
@@ -79,7 +73,6 @@ In the lower-right corner, there are 4 options determining which type of paramet
 - Numeric parameters.
 - Logical parameters.
 
----
 
 ### Keyboard shortcuts
 ```
@@ -90,7 +83,6 @@ Ctrl + E  - Export script
 Ctrl + L  - Load config
 ```
 
----
 
 ### 3. Preparing the USB drive
 1. Format your USB drive as `FAT32`.
@@ -101,7 +93,6 @@ Ctrl + L  - Load config
    `USB:\EFI\BOOT`
 4. Place `setup_var.efi` and `setupvar-script.nsh` in the root of the USB drive.
 
----
 
 ### 4. Script execution
 1. Boot from the USB drive via your motherboard’s boot menu (check your model’s key combo online).
@@ -114,7 +105,6 @@ Ctrl + L  - Load config
 4. Wait until the script finishes execution.
 5. Power off your PC using the physical power button to apply the changes.
 
----
 
 ### Config Syntax
 If you want to create/load a custom config, follow this syntax:  
@@ -125,15 +115,12 @@ PARAMETER NAME | DESIRED VALUE
 The config file must have a `.txt` extension, and the filename must contain the word `config`.  
 Examples: `my-config.txt`, `Configtest.txt`.
 
----
-
 ## Credits
 - [UEFI-Editor by BoringBoredom](https://github.com/BoringBoredom/UEFI-Editor?tab=readme-ov-file#how-to-change-hidden-settings-without-flashing-a-modded-bios)
 - [grub-mod-setup_var by datasone](https://github.com/datasone/grub-mod-setup_var)
 - [setup_var.efi](https://github.com/datasone/setup_var.efi?tab=readme-ov-file)
 - [UEFI](https://github.com/LongSoft/UEFITool#known-issues)
 
----
 
 ## Troubleshooting & Support
 If you encounter errors or bugs, please report them via the issue tracker. <br>
