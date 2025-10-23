@@ -10,18 +10,4 @@
     <ApplicationIcon>assets\icons\bios.ico</ApplicationIcon>
   </PropertyGroup>
 
-  <ItemGroup>
-    <None Remove="assets\icons\bios.ico" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Content Include="assets\icons\bios.ico" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Resource Include="assets\icons\bios.ico">
-      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-    </Resource>
-  </ItemGroup>
-
 </Project>
