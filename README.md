@@ -55,16 +55,7 @@ ifrextractor.exe "extracted_file_name.sct"
 ```
 11. Open the saved file in grubmod using the **Import file** button.
 
----
 
-### Keyboard shortcuts
-```
-Enter     - Search
-Ctrl + C  - Clear
-Ctrl + G  - Google
-Ctrl + E  - Export script
-Ctrl + L  - Load config
-```
 
 ---
 
@@ -103,11 +94,23 @@ PARAMETER NAME | Max
 The config file must have a `.txt` extension, and the filename must contain the word `config`.  
 Examples: `my-config.txt`, `Configtest.txt`.
 
+
+### Keyboard shortcuts
+```
+Enter     - Search
+Ctrl + C  - Clear
+Ctrl + G  - Google
+Ctrl + E  - Export script
+Ctrl + L  - Load config
+```
+
 ## Credits
 - [UEFI-Editor by BoringBoredom](https://github.com/BoringBoredom/UEFI-Editor?tab=readme-ov-file#how-to-change-hidden-settings-without-flashing-a-modded-bios)
 - [grub-mod-setup_var by datasone](https://github.com/datasone/grub-mod-setup_var)
 - [setup_var.efi](https://github.com/datasone/setup_var.efi?tab=readme-ov-file)
 - [UEFI](https://github.com/LongSoft/UEFITool#known-issues)
+
+
 
 
 ## Troubleshooting & Support
