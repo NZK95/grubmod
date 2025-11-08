@@ -80,6 +80,7 @@ ifrextractor.exe "extracted_file_name.sct"
 4. Wait until the script finishes execution.
 5. Power off your PC using the physical power button to apply the changes.
 
+---
 
 ### Config Syntax
 If you want to create/load a custom config, follow this syntax:  
