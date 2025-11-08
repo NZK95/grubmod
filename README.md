@@ -55,30 +55,6 @@ ifrextractor.exe "extracted_file_name.sct"
 ```
 11. Open the saved file in grubmod using the **Import file** button.
 
-
-### 2. Using grubmod
-- **Match case** – search with case sensitivity.
-- **Parameter/Description** – search by parameter name or description.
-- **Set all to** – if multiple parameters share the same values, you can apply them all at once by pressing **Apply**.
-  
----
-
-- **Import file** – load the main BIOS file, e.g. `Section_PE32_image_Setup_Setup.sct.0.0.en-US.uefi.ifr.txt`.
-- **Export script** – export a script with your modified parameters.
-- **Build config** – create a config from selected parameters.
-- **Load config** – load and apply a text config with parameters.
-- **Google** – search the parameter online.
-- **Search** – perform a parameter search.
-- **Clear** – reset the parameter collection to default.
-
----
-
-In the lower-right corner, there are 4 options determining which type of parameters are displayed:
-- All parameters.
-- Parameters with selectable values.
-- Numeric parameters.
-- Logical parameters.
-
 ---
 
 ### Keyboard shortcuts
