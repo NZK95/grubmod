@@ -1,17 +1,16 @@
 # grubmod
 [![Downloads](https://img.shields.io/github/downloads/NZK95/grubmod/total.svg)](https://github.com/NZK95/grubmod/releases)
 
+> ### Disclaimer
+> The author is not responsible for any possible damage caused to hardware as a result of using this project. <br>
+> This software does not guarantee any increase in performance and is intended for enthusiasts only. <br>
+> You use this program at your own risk. <br>
+
 By default, BIOS/UEFI only shows users a small part of its variables (settings). Most of them are hidden, and the standard interface doesn’t display them. These hidden options control everything — from memory timings to CPU power parameters.  
 **BIOS/UEFI variables** are key–value pairs stored in non-volatile memory (NVRAM). Manufacturers usually lock access to these variables.
 
 **grubmod** is a tool that allows you to view and modify hidden BIOS variables directly through the GRUB bootloader using a convenient graphical interface.  
 It automatically generates a valid script with the desired changes and applies it following the given instructions.
-
-> ## Disclaimer
-> The author is not responsible for any possible damage caused to hardware as a result of using this project.
-> This software does not guarantee any increase in performance and is intended for enthusiasts only.
-> You use this program at your own risk.
-
 
 ## Known Issues
 - As far as known, it doesn’t work on AMD systems.
