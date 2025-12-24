@@ -81,7 +81,7 @@ If a parameter is missing or incorrect, it will be ignored.
 ```bash
 PARAMETER NAME | DESIRED VALUE
 ```
-If you want a max / last value:
+If you want a max/last value:
 ```bash
 PARAMETER NAME | Max
 ```
@@ -89,13 +89,16 @@ The config file must have a `.txt` extension, and the filename must contain the 
 Examples: `my-config.txt`, `Configtest.txt`.
 
 
-### Keyboard shortcuts
+## Keyboard shortcuts
 ```
-Enter     - Search
-Ctrl + C  - Clear
-Ctrl + G  - Google
-Ctrl + E  - Export script
-Ctrl + L  - Load config
+| Shortcut   | Action          |
+|------------|-----------------|
+| `Enter`    | Search          |
+| `Ctrl + C` | Clear           |
+| `Ctrl + G` | Google          |
+| `Ctrl + E` | Export script   |
+| `Ctrl + L` | Load config     |
+
 ```
 
 ## Credits
