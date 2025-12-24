@@ -14,17 +14,16 @@
 
 
 ## Features
-- **Displays all BIOS/UEFI variables, including hidden ones, along with their data.**
-- **Convenient filters for viewing and analyzing parameters.**
-- **Modify variables and apply changes through GRUB.**
-- **Import and export configs.**
-- **Built-in presets with various configurations.**
-- **Script generation and execution for automating changes.**
-- **Error tracking via logging.**
+- Displays all BIOS/UEFI variables, including hidden ones, along with their data.
+- Convenient filters for viewing and analyzing parameters.
+- Modify variables and apply changes through GRUB.
+- Import and export configs.
+- Built-in presets with various configurations.
+- Script generation and execution for automating changes.
+- Error tracking via logging.
 
 
 ## Usage
-
 ### 1. Preparing working files
 1. Download the latest release of `grubmod`.
 2. Download the **current** version of your BIOS firmware and place it in your working folder.
