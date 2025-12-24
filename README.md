@@ -61,6 +61,7 @@ ifrextractor.exe "extracted_file_name.sct"
    `USB:\EFI\BOOT`
 4. Place `setup_var.efi` and `setupvar-script.nsh` in the root of the USB drive.
 
+---
 
 ### 3. Script execution
 1. Boot from the USB drive via your motherboard’s boot menu (check your model’s key combo online).
@@ -73,7 +74,6 @@ ifrextractor.exe "extracted_file_name.sct"
 4. Wait until the script finishes execution.
 5. Power off your PC using the physical power button to apply the changes.
 
----
 
 ### Config Syntax
 If you want to create/load a custom config, follow this syntax:  
