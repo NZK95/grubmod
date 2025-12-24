@@ -50,11 +50,9 @@ ifrextractor.exe "extracted_file_name.sct"
 ```
 11. Open the saved file in grubmod using the **Import file** button.
 
-
-
 ---
 
-### 3. Preparing the USB drive
+### 2. Preparing the USB drive
 1. Format your USB drive as `FAT32`.
 2. Download a UEFI shell file from one of these sources:
    - [UEFI-Shell](https://github.com/pbatard/UEFI-Shell/releases/latest) (`shellx64.efi`)
@@ -64,7 +62,7 @@ ifrextractor.exe "extracted_file_name.sct"
 4. Place `setup_var.efi` and `setupvar-script.nsh` in the root of the USB drive.
 
 
-### 4. Script execution
+### 3. Script execution
 1. Boot from the USB drive via your motherboard’s boot menu (check your model’s key combo online).
 2. In the UEFI shell, identify your USB drive:
    - Check the displayed **Mapping Table** (to re-display it, type `map`). Most likely, it’ll be `FS0`.
