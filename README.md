@@ -10,6 +10,7 @@
 ## Known Issues
 - As far as known, it doesn’t work on AMD systems.
 - Some parameters don’t have all possible values.
+- Some parameters names are invalid.
 
 
 ## Features
