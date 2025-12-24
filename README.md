@@ -8,7 +8,8 @@ By default, BIOS/UEFI only shows users a small part of its variables (settings).
 It automatically generates a valid script with the desired changes and applies it following the given instructions.
 
 > ## Disclaimer
-> The author is not responsible for any possible damage caused to hardware as a result of using this project.  
+> The author is not responsible for any possible damage caused to hardware as a result of using this project.
+> This software does not guarantee any increase in performance and is intended for enthusiasts only.
 > You use this program at your own risk.
 
 
