@@ -99,16 +99,14 @@ Examples: `my-config.txt`, `Configtest.txt`.
 | `Ctrl + L` | Load config     |
 
 
+## Troubleshooting
+If you encounter errors or bugs, please report them via the [issue tracker](https://github.com/NZK95/grubmod/issues).<br>
+Sometimes, after changing BIOS parameters, the system might not boot.
+To reset BIOS to defaults, clear the CMOS or remove the battery.
+
 ## Credits
 - [UEFI-Editor by BoringBoredom](https://github.com/BoringBoredom/UEFI-Editor?tab=readme-ov-file#how-to-change-hidden-settings-without-flashing-a-modded-bios)
 - [grub-mod-setup_var by datasone](https://github.com/datasone/grub-mod-setup_var)
 - [setup_var.efi](https://github.com/datasone/setup_var.efi?tab=readme-ov-file)
 - [UEFI](https://github.com/LongSoft/UEFITool#known-issues)
 
-
-
-
-## Troubleshooting & Support
-If you encounter errors or bugs, please report them via the [issue tracker](https://github.com/NZK95/grubmod/issues).<br>
-Sometimes, after changing BIOS parameters, the system might not boot.
-To reset BIOS to defaults, clear the CMOS or remove the battery.
