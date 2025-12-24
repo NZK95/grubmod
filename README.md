@@ -90,7 +90,6 @@ Examples: `my-config.txt`, `Configtest.txt`.
 
 
 ## Keyboard shortcuts
-```
 | Shortcut   | Action          |
 |------------|-----------------|
 | `Enter`    | Search          |
@@ -99,7 +98,6 @@ Examples: `my-config.txt`, `Configtest.txt`.
 | `Ctrl + E` | Export script   |
 | `Ctrl + L` | Load config     |
 
-```
 
 ## Credits
 - [UEFI-Editor by BoringBoredom](https://github.com/BoringBoredom/UEFI-Editor?tab=readme-ov-file#how-to-change-hidden-settings-without-flashing-a-modded-bios)
