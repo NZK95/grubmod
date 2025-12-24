@@ -110,3 +110,7 @@ To reset BIOS to defaults, clear the CMOS or remove the battery.
 [setup_var.efi](https://github.com/datasone/setup_var.efi?tab=readme-ov-file) <br>
 [UEFI](https://github.com/LongSoft/UEFITool#known-issues) <br>
 
+## License
+This project is licensed under the MIT License - see the [LICENSE](LICENSE.txt) file for details.
+
+
