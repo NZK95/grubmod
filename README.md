@@ -22,6 +22,10 @@
 - Script generation and execution for automating changes.
 - Error tracking via logging.
 
+## Requirements
+- BIOS image
+- Last version of **grubmod** from [`releases`](https://github.com/NZK95/grubmod/releases) <br>
+- USB drive
 
 ## Usage
 ### 1. Preparing working files
