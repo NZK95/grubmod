@@ -108,7 +108,7 @@ If you encounter errors or bugs, please report them via the [issue tracker](http
 Sometimes, after changing BIOS parameters, the system might not boot.
 To reset BIOS to defaults, clear the CMOS or remove the battery.
 
-## Credits
+## Resources & Credits
 [UEFI-Editor by BoringBoredom](https://github.com/BoringBoredom/UEFI-Editor?tab=readme-ov-file#how-to-change-hidden-settings-without-flashing-a-modded-bios) <br>
 [grub-mod-setup_var by datasone](https://github.com/datasone/grub-mod-setup_var) <br>
 [setup_var.efi](https://github.com/datasone/setup_var.efi?tab=readme-ov-file) <br>
