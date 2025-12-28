@@ -6,13 +6,6 @@
 > This software does not guarantee any increase in performance and is intended for enthusiasts only. <br>
 > You use this program at your own risk. <br>
 
-
-## Known Issues
-- As far as known, it doesn’t work on AMD systems.
-- Some parameters don’t have all possible values.
-- Some parameters names are invalid.
-
-
 ## Features
 - Displays all BIOS/UEFI variables, including hidden ones, along with their data.
 - Convenient filters for viewing and analyzing parameters.
@@ -21,6 +14,11 @@
 - Built-in presets with various configurations.
 - Script generation and execution for automating changes.
 - Error tracking via logging.
+
+## Known Issues
+- As far as known, it doesn’t work on AMD systems.
+- Some parameters don’t have all possible values.
+- Some parameters names are invalid.
 
 ## Requirements
 - BIOS image
