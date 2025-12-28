@@ -74,7 +74,7 @@ PEG1 Max Payload size | Max
 PEG2 Max Payload size | Max
 PEG3 Max Payload size | Max
 
-#RAM
+
 PowerDown Energy Ch1Dimm1 | 0
 PowerDown Energy Ch1Dimm0 | 0
 PowerDown Energy Ch0Dimm1 | 0
