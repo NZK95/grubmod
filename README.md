@@ -100,17 +100,18 @@ Examples: `my-config.txt`, `Configtest.txt`.
 | `Ctrl + E` | Export script   |
 | `Ctrl + L` | Load config     |
 
+## Resources & Credits
+[UEFI-Editor by BoringBoredom](https://github.com/BoringBoredom/UEFI-Editor?tab=readme-ov-file#how-to-change-hidden-settings-without-flashing-a-modded-bios) <br>
+[grub-mod-setup_var by datasone](https://github.com/datasone/grub-mod-setup_var) <br>
+[setup_var.efi](https://github.com/datasone/setup_var.efi?tab=readme-ov-file) <br>
+[UEFI](https://github.com/LongSoft/UEFITool#known-issues) <br>
+
 
 ## Troubleshooting
 If you encounter errors or bugs, please report them via the [issue tracker](https://github.com/NZK95/grubmod/issues).<br>
 Sometimes, after changing BIOS parameters, the system might not boot.
 To reset BIOS to defaults, clear the CMOS or remove the battery.
 
-## Resources & Credits
-[UEFI-Editor by BoringBoredom](https://github.com/BoringBoredom/UEFI-Editor?tab=readme-ov-file#how-to-change-hidden-settings-without-flashing-a-modded-bios) <br>
-[grub-mod-setup_var by datasone](https://github.com/datasone/grub-mod-setup_var) <br>
-[setup_var.efi](https://github.com/datasone/setup_var.efi?tab=readme-ov-file) <br>
-[UEFI](https://github.com/LongSoft/UEFITool#known-issues) <br>
 
 ## License
 This project is licensed under the MIT License - see the [LICENSE](LICENSE.txt) file for details.
