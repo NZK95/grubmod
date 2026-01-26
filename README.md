@@ -90,6 +90,7 @@ PARAMETER NAME | Max
 The config file must have a `.txt` extension, and the filename must contain the word `config`.  
 Examples: `my-config.txt`, `Configtest.txt`.
 
+> I do not guarantee performance boost for stock configs in the `configs`.
 
 ## Keyboard shortcuts
 | Shortcut   | Action          |
