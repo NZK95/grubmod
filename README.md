@@ -21,6 +21,7 @@
 - Some parameters names are invalid.
 
 ## Requirements
+- Windows x64
 - BIOS image
 - Last version of **grubmod** from [`releases`](https://github.com/NZK95/grubmod/releases) <br>
 - USB drive
