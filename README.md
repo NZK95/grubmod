@@ -1,6 +1,7 @@
 <div align="center">
 
 # grubmod
+> Unlock and modify hidden BIOS/UEFI variables — without flashing a modded BIOS
 
 ![GitHub last commit](https://img.shields.io/github/last-commit/NZK95/grubmod?style=flat-square)
 ![GitHub stars](https://img.shields.io/github/stars/NZK95/grubmod?style=flat-square)
