@@ -32,9 +32,10 @@
 - Error tracking via logging.
 
 ## Known Issues
-- As far as known, it doesn’t work on AMD systems.
-- Some parameters don’t have all possible values.
-- Some parameters names are invalid.
+> [!CAUTION]
+> - Does not work on AMD systems
+> - Some parameters don't have all possible values
+> - Some parameter names are invalid
 
 ## Requirements
 - Windows x64
@@ -107,6 +108,7 @@ PARAMETER NAME | Max
 The config file must have a `.txt` extension, and the filename must contain the word `config`.  
 Examples: `my-config.txt`, `Configtest.txt`.
 
+> [!WARNING]
 > I do not guarantee any performance boost for stock configs in the `configs` folder.
 
 ## Keyboard shortcuts
@@ -121,9 +123,6 @@ Examples: `my-config.txt`, `Configtest.txt`.
 ## Resources & Credits
 [UEFI-Editor by BoringBoredom](https://github.com/BoringBoredom/UEFI-Editor?tab=readme-ov-file#how-to-change-hidden-settings-without-flashing-a-modded-bios) <br>
 [grub-mod-setup_var by datasone](https://github.com/datasone/grub-mod-setup_var) <br>
-[setup_var.efi](https://github.com/datasone/setup_var.efi?tab=readme-ov-file) <br>
-[UEFI](https://github.com/LongSoft/UEFITool#known-issues) <br>
-
 
 ## Troubleshooting
 If you encounter errors or bugs, please report them via the [issue tracker](https://github.com/NZK95/grubmod/issues).<br>
