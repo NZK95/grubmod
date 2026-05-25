@@ -1,15 +1,18 @@
+<div align="center">
+
 # grubmod
+
 ![GitHub last commit](https://img.shields.io/github/last-commit/NZK95/grubmod)
 [![Downloads](https://img.shields.io/github/downloads/NZK95/grubmod/total.svg)](https://github.com/NZK95/grubmod/releases)
 ![GitHub stars](https://img.shields.io/github/stars/NZK95/grubmod)
 
-![](https://github.com/NZK95/grubmod/blob/master/docs/grubmod/grubmod%20%231.png)
+<img src="https://github.com/NZK95/grubmod/blob/master/docs/grubmod/grubmod%20%231.png" width="800"/>
+
+</div>
 
 > [!WARNING]
 > The author is not responsible for any possible damage caused to hardware as a result of using this project. <br>
-
 > This software does not guarantee any increase in performance and is intended for enthusiasts only. <br>
-
 > You use this program at your own risk. <br>
 
 ## Features
