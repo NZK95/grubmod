@@ -1,26 +1,26 @@
 <div align="center">
-  <img src="..." width="800"/>
-  <p><i>grubmod in action</i></p>
-</div>
-
-<div align="center">
 
 # grubmod
 
-![GitHub last commit](https://img.shields.io/github/last-commit/NZK95/grubmod)
-[![Downloads](https://img.shields.io/github/downloads/NZK95/grubmod/total.svg)](https://github.com/NZK95/grubmod/releases)
-![GitHub stars](https://img.shields.io/github/stars/NZK95/grubmod)
+![GitHub last commit](https://img.shields.io/github/last-commit/NZK95/grubmod?style=flat-square)
+![GitHub stars](https://img.shields.io/github/stars/NZK95/grubmod?style=flat-square)
+[![Downloads](https://img.shields.io/github/downloads/NZK95/grubmod/total?style=flat-square&color=brightgreen)](https://github.com/NZK95/grubmod/releases)
+![GitHub issues](https://img.shields.io/github/issues/NZK95/grubmod?style=flat-square)
+![GitHub license](https://img.shields.io/github/license/NZK95/grubmod?style=flat-square)
+![Platform](https://img.shields.io/badge/platform-Windows-blue?style=flat-square&logo=windows)
 
-<img src="https://github.com/NZK95/grubmod/blob/master/docs/grubmod/grubmod%20%231.png" width="800"/>
+<img src="https://github.com/NZK95/grubmod/blob/master/docs/grubmod/grubmod%20%231.png" width="800" style="border-radius: 12px"/>
 
 </div>
 
 <br>
 
 > [!WARNING]
-> The author is not responsible for any possible damage caused to hardware as a result of using this project. <br>
-> This software does not guarantee any increase in performance and is intended for enthusiasts only. <br>
-> You use this program at your own risk. <br>
+> The author is not responsible for any possible damage caused to hardware as a result of using this project.
+>
+> This software does not guarantee any increase in performance and is intended for enthusiasts only.
+>
+> You use this program at your own risk.
 
 ## Features
 - Displays all BIOS/UEFI variables, including hidden ones, along with their data.
