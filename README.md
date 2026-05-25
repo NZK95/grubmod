@@ -23,19 +23,21 @@
 >
 > You use this program at your own risk.
 
-## 📖 Table of Contents
-- [Features](#-features)
-- [Known Issues](#️-known-issues)
-- [Requirements](#-requirements)
-- [Usage](#-usage)
+## Table of Contents
+- [Features](#features)
+- [Known Issues](#known-issues)
+- [Requirements](#requirements)
+- [Usage](#usage)
   - [1. Preparing working files](#1-preparing-working-files)
   - [2. Preparing the USB drive](#2-preparing-the-usb-drive)
   - [3. Script execution](#3-script-execution)
-- [Config Syntax](#️-config-syntax)
-- [Keyboard Shortcuts](#️-keyboard-shortcuts)
-- [Troubleshooting](#-troubleshooting)
-- [Resources & Credits](#-resources--credits)
-- [License](#-license)
+- [Config Syntax](#config-syntax)
+- [Keyboard Shortcuts](#keyboard-shortcuts)
+- [Troubleshooting](#troubleshooting)
+- [Resources & Credits](#resources--credits)
+- [License](#license)
+
+---
 
 ## Features
 - Displays all BIOS/UEFI variables, including hidden ones, along with their data.
