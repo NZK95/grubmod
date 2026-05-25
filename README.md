@@ -1,4 +1,9 @@
 <div align="center">
+  <img src="..." width="800"/>
+  <p><i>grubmod in action</i></p>
+</div>
+
+<div align="center">
 
 # grubmod
 
@@ -9,6 +14,8 @@
 <img src="https://github.com/NZK95/grubmod/blob/master/docs/grubmod/grubmod%20%231.png" width="800"/>
 
 </div>
+
+<br>
 
 > [!WARNING]
 > The author is not responsible for any possible damage caused to hardware as a result of using this project. <br>
