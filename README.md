@@ -1,7 +1,7 @@
 # grubmod
-![GitHub last commit](https://img.shields.io/github/last-commit/USER/REPO)
+![GitHub last commit](https://img.shields.io/github/last-commit/NZK95/grubmod)
 [![Downloads](https://img.shields.io/github/downloads/NZK95/grubmod/total.svg)](https://github.com/NZK95/grubmod/releases)
-![GitHub stars](https://img.shields.io/github/stars/USER/REPO)
+![GitHub stars](https://img.shields.io/github/stars/NZK95/grubmod)
 
 ![](https://github.com/NZK95/grubmod/blob/master/docs/grubmod/grubmod%20%231.png)
 
