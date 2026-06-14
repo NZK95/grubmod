@@ -1,3 +1,4 @@
+> If your system supports scewin use [scemod](https://github.com/NZK95/scemod)
 <div align="center">
 
 # grubmod
